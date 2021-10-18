@@ -1,0 +1,38 @@
+
+
+while we wait do you want me to point out exactly where the problem is?
+ok sir 
+
+this is what i want to populate... now im going to show where it is supposed to populate from
+
+all ready for you :-)
+
+gotcha
+
+on the left where it says "0$/hour".. this component is not populating
+ok
+its called "car-card", the component... 
+
+
+on the right is where i belive the component to be poplating the json objects and where i;ll need your expertise
+
+
+literally line 24 where you see the "cars" variable thats being mapped to the UI.
+
+are you following? 
+yes 
+
+on this page is what i'd like to populate the car-card component.
+
+this is all i really want done. the disconnect is I don't understand redux well enough to fix this problem at the moment
+and hopefully where you can fill the gap.
+yes ok let me check any if am need any help of you i contact with you 
+
+of course contact me whenever you need me.
+
+what mode of contact would you need?
+fiverr 
+if you have any other can you suggest me
+
+fivver is fine. ok thanks
+thank you.. anything else? ok Sir all fine.ok thanks again :)
