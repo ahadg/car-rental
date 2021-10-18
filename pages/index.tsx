@@ -21,9 +21,9 @@ const Home = (): ReactElement => {
 
 
 
-
+    console.log('the main url', process.env.NEXT_PUBLIC_ORIGIN);
     const handleClickConfirm = (): void => {
-        console.log('url', process.env.customKey);
+        //console.log('url', process.env.customKey);
         console.log('url', process.env.NEXT_PUBLIC_ORIGIN);
         axios
             .get(process.env.NEXT_PUBLIC_ORIGIN + '/cars')
@@ -31,7 +31,7 @@ const Home = (): ReactElement => {
                 console.log(res);
             })
             .catch(error => {
-                console.log(error);
+                console.log(error.response);
             });
     };
     handleClickConfirm();
