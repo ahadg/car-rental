@@ -2,7 +2,7 @@ import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useState,useEffect } from 'react';
 import {useDispatch} from 'react-redux'
 
 import Banner from '../components/banner';
@@ -23,20 +23,18 @@ const Home = (): ReactElement => {
 
 
     console.log('the main url', process.env.NEXT_PUBLIC_ORIGIN);
-    const handleClickConfirm = (): void => {
-        //console.log('url', process.env.customKey);
-        console.log('url', process.env.NEXT_PUBLIC_ORIGIN);
-        axios
-            .get(process.env.NEXT_PUBLIC_ORIGIN + '/cars')
-            .then(res => {
-                console.log(res);
-                dispatch(Actions.success(res.data));
-            })
-            .catch(error => {
-                console.log(error.response);
-            });
-    };
-    handleClickConfirm();
+    useEffect(() => {
+            console.log('url', process.env.NEXT_PUBLIC_ORIGIN);
+            axios
+                .get(process.env.NEXT_PUBLIC_ORIGIN + '/cars')
+                .then(res => {
+                    console.log(res);
+                    dispatch(Actions.success(res.data));
+                })
+                .catch(error => {
+                    console.log(error.response);
+                });
+    },[])
     return (
         <>
             <Head>
