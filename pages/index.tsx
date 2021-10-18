@@ -68,7 +68,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     // fetch
     try {
         const cars: ICar[] = await (await axios.get(process.env.NEXT_PUBLIC_ORIGIN + '/cars')).data;
-        //console.log('fetched',cars)
+        console.log('fetched',cars)
         dispatch(Actions.success(cars));
     } catch {
         dispatch(Actions.error('Server error'));
