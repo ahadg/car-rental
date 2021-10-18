@@ -3,6 +3,7 @@ import axios from 'axios';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import React, { ReactElement, useState } from 'react';
+import {useDispatch} from 'react-redux'
 
 import Banner from '../components/banner';
 import BlackRect from '../components/black-rect';
@@ -16,7 +17,7 @@ import { initializeStore } from '../redux/store';
 const Home = (): ReactElement => {
     isAnalitic() && axios.post(process.env.NEXT_PUBLIC_ORIGIN + '/analitics').then(req => console.log(req.data));
     console.log(isAnalitic());
-
+    const dispatch = useDispatch()
     
 
 
@@ -29,6 +30,7 @@ const Home = (): ReactElement => {
             .get(process.env.NEXT_PUBLIC_ORIGIN + '/cars')
             .then(res => {
                 console.log(res);
+                dispatch(Actions.success(res.data));
             })
             .catch(error => {
                 console.log(error.response);
@@ -58,25 +60,25 @@ const Home = (): ReactElement => {
 };
 
 //get cars on server side
-export const getServerSideProps: GetServerSideProps = async () => {
-    // store
-    const reduxStore = initializeStore(initialState);
-    const { dispatch } = reduxStore;
+// export const getServerSideProps: GetServerSideProps = async () => {
+//     // store
+//     const reduxStore = initializeStore(initialState);
+//     const { dispatch } = reduxStore;
 
-    dispatch(Actions.start(true));
-    // console.log('dasdasdasdaskdjhasjkdgasjkdgasdjkgasjkdhgs')
-    // fetch
-    try {
-        const cars: ICar[] = await (await axios.get('./'+process.env.NEXT_PUBLIC_ORIGIN + '/cars')).data;
-        console.log('fetched',cars)
-        dispatch(Actions.success(cars));
-    } catch {
-        dispatch(Actions.error('Server error'));
-    }
+//     dispatch(Actions.start(true));
+//     // console.log('dasdasdasdaskdjhasjkdgasjkdgasdjkgasjkdhgs')
+//     // fetch
+//     try {
+//         const cars: ICar[] = await (await axios.get('./'+process.env.NEXT_PUBLIC_ORIGIN + '/cars')).data;
+//         console.log('fetched',cars)
+//         dispatch(Actions.success(cars));
+//     } catch {
+//         dispatch(Actions.error('Server error'));
+//     }
 
-    return {
-        props: { state: reduxStore.getState() },
-    };
-};
+//     return {
+//         props: { state: reduxStore.getState() },
+//     };
+// };
 
 export default Home;
