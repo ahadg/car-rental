@@ -8,7 +8,7 @@ import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/sidebar/sidebar';
-import Footer from '../components/footer';
+import Footer from '../components/Footer';
 
 
 
