@@ -115,7 +115,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse): Promi
                                 </tr>
                                 <tr>
                                     <th>Date:</th>
-                                    <td>${from.month}.${from.day}.${from.year} ${time?.timefrom}:00 ${time?.ztimefrom} -- ${to.month}.${to.day}.${to.year}  ${time?.timeto}:00 ${time?.ztimeto}</td>
+                                    <td>${from.month+1}.${from.day}.${from.year} ${time?.timefrom}:00 ${time?.ztimefrom} -- ${to.month+1}.${to.day}.${to.year}  ${time?.timeto}:00 ${time?.ztimeto}</td>
                                 </tr>
                                 <tr>
                                     <th>Price per Day:</th>

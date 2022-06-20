@@ -1,5 +1,80 @@
 [
   {
+    "firstName": "muhammad ahad",
+    "lastName": "ahad",
+    "img": "comfort.jpg",
+    "email": "muhmmadahad594@gmail.com",
+    "phone": "923069595997",
+    "title": "Intermediate",
+    "text": "Nissan Versa or similar.",
+    "price": 3.5,
+    "total": 22,
+    "totalcost": 91.5,
+    "from": {
+      "year": 2022,
+      "month": 5,
+      "day": 21,
+      "time": 16
+    },
+    "to": {
+      "year": 2022,
+      "month": 5,
+      "day": 22,
+      "time": 14
+    },
+    "place": "Multan, Pakistan",
+    "extrapackages": [
+      {
+        "heading": "Loss Damage Waiver (LDW)",
+        "title": "Protects you from theft, and if the rented car is accidentally damaged.",
+        "price": 26.99,
+        "payment": "Day"
+      }
+    ],
+    "time": {
+      "totaldays": 1,
+      "ztimefrom": "PM",
+      "timefrom": 9,
+      "ztimeto": "PM",
+      "timeto": 10,
+      "totalhours": 25
+    }
+  },
+  {
+    "firstName": "muhammad",
+    "lastName": "ahad",
+    "img": "econom.png",
+    "email": "muhmmadahad594@gmail.com",
+    "phone": "+923069595997",
+    "title": "Compact",
+    "text": "Toyota Yaris or similar",
+    "price": 2.375,
+    "total": 70,
+    "totalcost": 193.5,
+    "from": {
+      "year": 2022,
+      "month": 5,
+      "day": 20,
+      "time": 1
+    },
+    "to": {
+      "year": 2022,
+      "month": 5,
+      "day": 22,
+      "time": 23
+    },
+    "place": "Multan, Pakistan",
+    "extrapackages": [],
+    "time": {
+      "totaldays": 3,
+      "ztimefrom": "PM",
+      "timefrom": 9,
+      "ztimeto": "PM",
+      "timeto": 7,
+      "totalhours": 46
+    }
+  },
+  {
     "firstName": "muhammad",
     "lastName": "ahad",
     "img": "econom.png",

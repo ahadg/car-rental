@@ -53,14 +53,14 @@ const Date = (): ReactElement => {
                         <TableCell className={styles.side} component="th" scope="row">
                             Start date:
                         </TableCell>
-                        <TableCell>{`${dateFrom.month}.${dateFrom.day}.${dateFrom.year} ${allstates.checkin?.time?.timefrom}:00 ${allstates.checkin?.time?.ztimefrom}`}</TableCell>
+                        <TableCell>{`${dateFrom.month+1}.${dateFrom.day}.${dateFrom.year} ${allstates.checkin?.time?.timefrom}:00 ${allstates.checkin?.time?.ztimefrom}`}</TableCell>
                     </TableRow>
 
                     <TableRow>
                         <TableCell className={styles.side} component="th" scope="row">
                             End date:
                         </TableCell>
-                        <TableCell>{`${dateTo.month}.${dateTo.day}.${dateTo.year} ${allstates.checkin?.time?.timeto}:00 ${allstates.checkin?.time?.ztimeto}`}</TableCell>
+                        <TableCell>{`${dateTo.month+1}.${dateTo.day}.${dateTo.year} ${allstates.checkin?.time?.timeto}:00 ${allstates.checkin?.time?.ztimeto}`}</TableCell>
                     </TableRow>
 
                     <TableRow>
