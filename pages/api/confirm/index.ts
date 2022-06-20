@@ -100,7 +100,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse): Promi
                             </a>
                             &#127881; &#128663; &#128640;
                         </h2>
-                        <img src="${img}" alt="Reserved Vehicle" />
+                        <img src="https://${req.headers.host}/${img}" alt="Reserved Vehicle" />
                         <div class="car-rent-general">
                             <h3>This message confirms your booking</h3>
                             <h4>Reservation Description:</h4>
