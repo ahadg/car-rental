@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import React, { ReactElement } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { isCorrectEnd, isCorrectStart } from '../../helpers/dateUtils';
+import { isCorrectEnd, isCorrectStart,gettotalhours } from '../../helpers/dateUtils';
 import { ICheckin, IDate } from '../../interfaces/interfaces';
 import { IState } from '../../redux/rootState';
 import { getCheckinFrom, getCheckinTo } from '../../redux/selectors';
@@ -17,6 +17,7 @@ import { setRentStep } from '../stepper/stepper.actions';
 import { formActions } from './checkin-form.actions';
 import * as form from './checkin-form.form';
 import useStyles from './checkin-form.styles';
+import { checkintime } from '../checkin-date/checkin-date.actions';
 
 const CheckinForm = (): ReactElement => {
     const dispatch = useDispatch();
@@ -29,30 +30,43 @@ const CheckinForm = (): ReactElement => {
 
     // form
     const value = useSelector((state: IState): ICheckin => state.form);
+    // total days
+    const {checkin} : any = useSelector((state) => state);
     const formik = useFormik({
         initialValues: value,
         validationSchema: form.userSchema,
         onSubmit: values => {
-            if (!isCorrectStart(dateFrom, 2)) {
+            if(!(Number(checkin.time.totaldays) > 0)){
+                     dispatch(open(form.warn.day));
+              return;
+            }
+            
+            const DateFrom = {...checkin.from ,time: checkin.time.ztimefrom == "AM" ? checkin.time.timefrom : checkin.time.timefrom + 12}
+            const DateTo = {...checkin.to ,time : checkin.time.ztimeto == "AM" ? checkin.time.timeto : checkin.time.timeto + 12}
+            //console.log(checkin)
+            console.log('dates',DateFrom,DateTo)
+            console.log(isCorrectEnd(DateFrom,DateTo,24))
+            if (!isCorrectStart(DateFrom, 2)) {
                 dispatch(open(form.warn.start));
                 return;
             }
-
-            if (!isCorrectEnd(dateFrom, dateTo, 4)) {
-                dispatch(open(form.warn.end));
-                return;
-            }
-            console.log(values)
+            if (!isCorrectEnd(DateFrom,DateTo,24)) {
+                 dispatch(open(form.warn.end));
+                 return;
+             }
+            //console.log(values)
              // form data
              dispatch(formActions(values));
+
+            const totalhours = gettotalhours(DateFrom,DateTo)
+            console.log('total-hours',totalhours)
+            dispatch(checkintime({  ...checkin.time,totalhours }));
              
             // stepper
             dispatch(setRentStep(1));
 
-           
-
             // push history
-            router.push('/address/' + router.query.car);
+           router.push('/address/' + router.query.car);
         },
     });
 
@@ -60,7 +74,7 @@ const CheckinForm = (): ReactElement => {
         <Grid className={styles.container} container spacing={5}>
             <Grid className={styles.root} item xs={12} md={4}>
                 <Typography className={styles.title} variant="h5" component="h3">
-                    Personal information
+                    Personal Information
                 </Typography>
 
                 <form onSubmit={formik.handleSubmit} noValidate autoComplete="off">

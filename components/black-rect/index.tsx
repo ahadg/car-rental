@@ -16,8 +16,8 @@ const BlackRect = (): ReactElement => {
                         #Selling a 5Star service through Car Rentals!
                     </Typography>
                     <Typography className={styles.subtitle} variant="subtitle2">
-                        Our fleet ranges from small cars for a busy day in town to larger Jeeps able to traverse the St. Thomas, St. John and St. Croix roads, which would make the perfect
-                        accompaniment for the family today.
+                        Our fleet ranges from small cars for a busy day in town to larger Jeeps able to traverse the hills of St. Thomas, which would make the perfect
+                        vehicle for your travels today. Allow us to make your experience perfect.
                     </Typography>
                 </Grid>
             </Paper>

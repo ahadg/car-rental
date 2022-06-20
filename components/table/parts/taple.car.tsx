@@ -16,6 +16,7 @@ import { useStyles } from '../table.srtyles';
 const Car = (): ReactElement => {
     const styles = useStyles();
     const car: ICar = useSelector(getSingleCarSelector);
+    const {checkin} : any = useSelector((state) => state);
 
     return (
         <TableContainer className={styles.table} component={Paper}>
@@ -62,9 +63,9 @@ const Car = (): ReactElement => {
 
                     <TableRow>
                         <TableCell className={styles.side} component="th" scope="row">
-                            Price per hour:
+                            Price per day:
                         </TableCell>
-                        <TableCell>{car.price + '$'}</TableCell>
+                        <TableCell>{car.price * 24 + '$'}</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

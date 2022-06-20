@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-const getSteps = (): string[] => ['Select rent duration', 'Choose rent location', 'Confirmation'];
+const getSteps = (): string[] => ['Select rent duration', 'Choose rent location','Choose packages' ,'Confirmation'];
 
 const MyStepper = (): ReactElement => {
     const styles = useStyles();

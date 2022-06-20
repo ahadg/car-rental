@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Pic from '../public/white.png'
 
 export const FooterContainer = styled.footer`
-background-color: #001a33;
+background-color: #005b96;
 `
 
 export const FooterWrap = styled.div`
@@ -48,7 +48,7 @@ color: #fff;
     width: 100%;
 }
 `
-export const FooterLinkTitle = styled.h1`
+export const FooterLinkTitle = styled.h2`
 font-size: 14px;
 margin-bottom: 16px;
 `

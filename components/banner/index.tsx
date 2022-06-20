@@ -14,11 +14,16 @@ const Banner = (): ReactElement => {
         <>
             <Paper className={styles.paper} elevation={0}>
                 <Grid item xs={12} md={6}>
-                    <Typography className={styles.title} variant="h2" component="h1">
-                        Agile Car Rentals
+                    <Typography className={styles.title} variant="h2" component="h2">
+                        Allow AGILE to Help
+                        <br/>
                     </Typography>
                     <Typography className={styles.subtitle} variant="subtitle2">
-                        Providing excellent service to the United States Virgin Islands through rental vehicles.
+                        <ul>
+                            <li>Avoid delays with our Free Airport Pickup.</li>
+                            <li>Take advantage of Unlimited Miles and Free Roadside Assistance.</li>
+                            <li>Never be caught helpless with our 24HR Service.</li>
+                        </ul>
                     </Typography>
                 </Grid>
             </Paper>
@@ -26,18 +31,15 @@ const Banner = (): ReactElement => {
             <Grid className={styles.container} container spacing={matches ? 1 : 8}>
                 <Grid item xs={12} md={6}>
                     <Typography className={styles.title} variant="h4" component="h2">
-                        We believe that Agile Car Rentals is about more than getting from A to B. It&apos;s about the journey itself. The
-                        experiences you can have along the way and the cars you can explore in.
+                        Enjoy the Virgin Islands, with a vehicle rental service that cares about you.
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <Typography className={styles.subtitle} variant="subtitle2">
-                        Whether you want to visit the Islands main attractions or find those hidden gems only accessible by car. We offer not only 
-                        the best cars, but the best experiences, we aim to please.
+                        Our customers no longer struggle with the hassle of Rental Pickups. At Agile, we take that effort to make your vacation effortless.
                     </Typography>
                     <Typography className={styles.subtitle} variant="subtitle2">
-                        At Agile we consider your needs, providing a variety of vehicles. That&apos;s why we have a range of cars and van rentals
-                        solutions available.
+                        Save up to 10% when rentals are longer than 3 days. Book Below!
                     </Typography>
                 </Grid>
             </Grid>

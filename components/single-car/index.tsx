@@ -14,16 +14,17 @@ const SingleCar = (): ReactElement => {
     const styles = useStyles();
     // car
     const car: ICar = useSelector(getSingleCarSelector);
-    console.log(car)
+    //console.log(car)
     // date/time
     const dateFrom: IDate = useSelector(getCheckinFrom);
     const dateTo: IDate = useSelector(getCheckinTo);
     const total: number = totlaCheckinTime(dateFrom, dateTo);
+    const {checkin} : any = useSelector((state) => state);
 
     return (
         <>
             <Typography className={styles.title} variant="h5" component="h3">
-                Short decription
+                Short Description
             </Typography>
 
             <Grid container spacing={5}>
@@ -33,12 +34,12 @@ const SingleCar = (): ReactElement => {
 
                 <Grid item xs={12} md={6}>
                     <Typography className={styles.bold} variant="body2" gutterBottom>
-                        {`total rental time: ${total} hours`}
+                        {`Total Rental Days: ${checkin.time.totaldays} days`}
                     </Typography>
                     <Typography className={styles.bold} variant="body2" gutterBottom>
-                        total price:
-                        <span className={styles.price}>{` $${formatPrice(total * car.price)} `}</span>
-                        {`- $${car.price}.00/hour`}
+                        Total Price:
+                        <span className={styles.price}>{` $${formatPrice(checkin.time.totaldays * car.price * 24)} `}</span>
+                        {/* {`- $${car.price}.00/hour`} */}
                     </Typography>
 
                     <Typography className={styles.subtitle} color="primary" variant="h6" component="h4">
@@ -49,10 +50,10 @@ const SingleCar = (): ReactElement => {
                     </Typography>
 
                     <Typography className={styles.date} variant="body2" color="textSecondary" component="p">
-                        {`start date: ${dateFrom.day}.${dateFrom.month}.${dateFrom.year} ${dateFrom.time}:00`}
+                        {`Start date: ${dateFrom.month}/${dateFrom.day}/${dateFrom.year} ${dateFrom.time}:00`}
                     </Typography>
                     <Typography className={styles.date} variant="body2" color="textSecondary" component="p">
-                        {`end date: ${dateTo.day}.${dateTo.month}.${dateTo.year} ${dateTo.time}:00`}
+                        {`End date: ${dateTo.month}/${dateTo.day}/${dateTo.year} ${dateTo.time}:00`}
                     </Typography>
                 </Grid>
             </Grid>

@@ -6,9 +6,9 @@ import Image from 'next/image'
 import Pic from '../public/pic.png'
 
 
-const Nav = styled.nav`
+const Nav = styled.nav` 
 height: 60px;
-background-color: #1e90ff;
+background-color: #005b96;
 color: #fff;
 display: flex;
 justify-content: space-between;

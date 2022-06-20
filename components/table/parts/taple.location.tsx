@@ -31,7 +31,7 @@ const Location = (): ReactElement => {
                         <TableCell className={styles.side} component="th" scope="row">
                             Car location:
                         </TableCell>
-                        <TableCell>{location.description}</TableCell>
+                        <TableCell>{location?.description}</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

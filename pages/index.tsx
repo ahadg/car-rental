@@ -2,9 +2,10 @@ import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import React, { ReactElement, useState,useEffect } from 'react';
-import {useDispatch} from 'react-redux'
+import React, { ReactElement, useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
+import HeroSection from '../components/HeroSection';
 import Banner from '../components/banner';
 import BlackRect from '../components/black-rect';
 import CarCard from '../components/car-card';
@@ -17,30 +18,42 @@ import { initializeStore } from '../redux/store';
 const Home = (): ReactElement => {
     isAnalitic() && axios.post(process.env.NEXT_PUBLIC_ORIGIN + '/analitics').then(req => console.log(req.data));
     console.log(isAnalitic());
-    const dispatch = useDispatch()
-    
-
-
+    const dispatch = useDispatch();
 
     console.log('the main url', process.env.NEXT_PUBLIC_ORIGIN);
     useEffect(() => {
-            console.log('url', process.env.NEXT_PUBLIC_ORIGIN);
-            axios
-                .get(process.env.NEXT_PUBLIC_ORIGIN + '/cars')
-                .then(res => {
-                    console.log(res);
-                    dispatch(Actions.success(res.data));
-                })
-                .catch(error => {
-                    console.log(error.response);
-                });
-    },[])
+        console.log('url', process.env.NEXT_PUBLIC_ORIGIN);
+        axios
+            .get(process.env.NEXT_PUBLIC_ORIGIN + '/cars')
+            .then(res => {
+                console.log(res);
+                dispatch(Actions.success(res.data));
+            })
+            .catch(error => {
+                console.log(error.response);
+            });
+    }, []);
     return (
         <>
             <Head>
-                <title>Agile Car Rentals</title>
-            </Head>
+                <meta name="google-site-verification" content="UV7geI93Mq57Rr9EbvI-aUYGqWKS7E6iGUJv2TCa4cY" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+                <meta charSet="utf-8" />
+                <meta
+                    name="description"
+                    content="Agile Car Rental is a Rental company in St. Thomas, United States Virgin Islands. Offering the best vehicles for the area and incredible Deals including Cyril E King Airport Pick-Up, Unlimited Miles, Travel Partner package and more!"
+                />
+                <title>Agile Car Rental | St. Thomas Car Rentals Priced with you in mind </title>
 
+                <meta property="og:url" content="www.agilecarrental.com" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Agile Car Rental" />
+                <meta name="twitter:card" content="summary" />
+                <meta property="og:description" content="Let's get you, your Ideal Island vehicle! Book Now" />
+                <meta property="og:image" content={'url of image'} />
+            </Head>
+            <HeroSection />
             <header>
                 <Container maxWidth="lg">
                     <Banner />

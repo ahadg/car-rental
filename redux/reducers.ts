@@ -12,11 +12,12 @@ import { place } from '../components/places/places.reducers';
 import { singleCarReducer } from '../components/single-car/single-car.reducers';
 import { activeStep } from '../components/stepper/stepper.reducers';
 import { success } from '../components/success/success.reducers';
+import { Packagesstatus } from '../components/packages/packages.reducers'
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['form', 'activeStep', 'place','cars'],
+    whitelist: ['form', 'activeStep', 'place','cars','checkin','Packagesstatus'],
 };
 
 const cars = combineReducers({
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
     loading,
     activeStep,
     address,
+    Packagesstatus
 });
 
 export default persistReducer(persistConfig, rootReducer);

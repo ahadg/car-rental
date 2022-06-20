@@ -8,7 +8,7 @@ import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Map from '../../components/map';
@@ -63,13 +63,18 @@ const Address = (): ReactElement => {
         router.push('/rent/' + router.query.car);
     };
 
+    useEffect(() => {
+        dispatch(setRentStep(1));
+    },[])
+
     const handleClickNext = (): void => {
         const nextStep = () => {
-            router.push('/confirm/' + router.query.car);
+            router.push('/packages');
+            //router.push('/confirm/' + router.query.car);
             dispatch(setRentStep(2));
         };
-
-        place ? nextStep() : dispatch(open(warn));
+        nextStep()
+        //place ? nextStep() : dispatch(open(warn));
     };
 
     return (

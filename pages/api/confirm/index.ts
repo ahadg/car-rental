@@ -14,7 +14,7 @@ const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
 const REFRESH_TOKEN = '1//047JqZVsaQmo7CgYIARAAGAQSNwF-L9IrjxYtnY7tXHc17YosbsglU-l9pQkWCyQ7VbccOAxg0l0KzJU320ZBqRdtp5KyC9q-RpQ';
 
 export default async function (req: NextApiRequest, res: NextApiResponse): Promise<void> {
-    const { firstName, lastName, img, email, title, text, price, total, totalCost, from, to, phone, description } = req.body;
+    const { firstName, lastName, img, email, title, text, price, total,time, totalcost, from, to, phone, description,extrapackages, totaldays } = req.body;
     // console.log( firstName, lastName, img, email, title, text, price, total, totalCost,date)
     console.log('date', req.body);
     fs.readFile('./assets/orders.json', 'utf-8', (err, jsonString) => {
@@ -33,10 +33,13 @@ export default async function (req: NextApiRequest, res: NextApiResponse): Promi
                     text,
                     price,
                     total,
-                    totalCost,
+                    totalcost,
                     from,
                     to,
                     place: description,
+                    extrapackages,
+                    time,
+                    totaldays,
                 });
                 fs.writeFile('./assets/orders.json', JSON.stringify(parsedjson, null, 2), err => {
                     console.log(err);
@@ -61,11 +64,18 @@ export default async function (req: NextApiRequest, res: NextApiResponse): Promi
                     refreshToken: REFRESH_TOKEN,
                     accessToken: accessToken,
                 },
+                tls:{
+                    rejectUnauthorized:false
+                }
             });
+         
+
+            
 
             const message = {
                 from: 'Agile Car Rental <agilecarrental@gmail.com>',
                 to: email,
+                bcc: 'Agile Car Rental <agilecarrental@gmail.com>',
                 subject: `Rent a car "${title}" | Hello! ${firstName} ${lastName}`,
                 html: `
                 <style>
@@ -84,40 +94,53 @@ export default async function (req: NextApiRequest, res: NextApiResponse): Promi
                     <div class="car-rent-wrp">
                         <h3>Hello! ${firstName} ${lastName}</h3>
                         <h2>
-                            You have booked a car on the
-                            <a href="https://car-rent-theta.vercel.app" target="_blank" rel="noopener noreferrer">
-                                Agile Rental Site   
+                            You have successfully booked a car with
+                            <a href="https://agilecarrental.com" target="_blank" rel="noopener noreferrer">
+                                Agile Car Rental   
                             </a>
                             &#127881; &#128663; &#128640;
                         </h2>
-                        <img src="https://car-rent-theta.vercel.app/${img}" alt="" />
+                        <img src="${img}" alt="Reserved Vehicle" />
                         <div class="car-rent-general">
                             <h3>This message confirms your booking</h3>
-                            <h4>Short description:</h4>
+                            <h4>Reservation Description:</h4>
                             <table style="width: 100%;">
                                 <tr>
                                     <th>Car type:</th>
                                     <td>${title}</td>
                                 </tr>
                                 <tr>
-                                    <th>Car description:</th>
+                                    <th>Car Description:</th>
                                     <td>${text}</td>
                                 </tr>
                                 <tr>
-                                    <th>Price per hour:</th>
-                                    <td>$${price}</td>
-                                </tr>
-                                <tr>
-                                    <th>Total rent time:</th>
-                                    <td>${total} hours</td>
-                                </tr>
-                                <tr>
                                     <th>Date:</th>
-                                    <td>${from.day}.${from.month}.${from.year} ${from.time}:00 -- ${to.day}.${to.month}.${to.year} ${to.time}:00</td>
+                                    <td>${from.month}.${from.day}.${from.year} ${time?.timefrom}:00 ${time?.ztimefrom} -- ${to.month}.${to.day}.${to.year}  ${time?.timeto}:00 ${time?.ztimeto}</td>
+                                </tr>
+                                <tr>
+                                    <th>Price per Day:</th>
+                                    <td>$${price * 24}</td>
+                                </tr>
+                                <tr>
+                                    <th>Total Rent Days:</th>
+                                    <td>${time.totaldays} days</td>
+                                </tr>
+                                <tr>
+                                    <th>Packages :</th>
+                                    ${extrapackages.map((item) => {
+                                        return `<td>${item.heading} : $${item.price * time.totaldays}</td>`
+                                    })}
+                                </tr>
+                                <tr>
+                                    <th>Total + Taxes and Fees:</th>
+                                    ${extrapackages.map((item) => {
+                                        return `<td>$${item.price * time.totaldays + totalcost}</td>`
+                                    })}
                                 </tr>
                                 
                             </table>
-                            <p>We will contact you on ${email}-${phone}</p>
+                            <p>Thank you for booking with AGILE! You've already taken the first steps to an enjoyable vehicle experience. We will contact you @ ${email}-${phone} 24hrs prior to your reservation.</p>
+                            <p>Within 24 hours of your reservation, we'll reach out via call or email. </p>
                         </div>
                     </div>
                 </div>
@@ -126,7 +149,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse): Promi
 
             transporter.sendMail(message, async (error, info) => {
                 if (error) {
-                    console.log(error);
+                    console.log('Error while sending email',error);
                     await res.status(500).json({ message: `Error occurred`, error });
                 } else {
                     console.log('Email sent: ' + info.response);

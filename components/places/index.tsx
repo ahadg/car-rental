@@ -77,9 +77,9 @@ const Places = (): ReactElement => {
                 onInputChange={debounce(handleChange, 300)}
                 renderInput={params => <TextField {...params} label="Add a location" variant="outlined" fullWidth />}
                 renderOption={option => {
-                    const matches = option.matched ? option.matched : [];
+                    const matches = option?.matched ? option.matched : [];
                     const parts = parse(
-                        option.main_text,
+                        option?.main_text,
                         matches.map(match => [match.offset, match.offset + match.length]),
                     );
 
@@ -95,7 +95,7 @@ const Places = (): ReactElement => {
                                     </span>
                                 ))}
                                 <Typography variant="body2" color="textSecondary">
-                                    {option.secondary_text}
+                                    {option?.secondary_text}
                                 </Typography>
                             </Grid>
                         </Grid>

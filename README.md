@@ -46,6 +46,12 @@ Next, open project folder and run the development server:
 npm run dev
 # or
 yarn dev
+
+# push
+git add . 
+git commit -m "change email total"
+git push origin
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

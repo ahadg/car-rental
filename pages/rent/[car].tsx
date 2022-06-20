@@ -49,7 +49,7 @@ const Checkin = (props): ReactElement => {
 
         const fetchcar = async () => {
             //dispatch(Actions.start(true));
-
+             
             // fetch
             try {
                 const car: ICar = await (await axios.get(process.env.NEXT_PUBLIC_ORIGIN + '/cars/' + router.query.car)).data;

@@ -44,11 +44,26 @@ const CustomApp = ({ Component, pageProps }: AppProps): ReactElement => {
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <Head>
-                    <link rel="icon" href="/favicon.ico" />
                     <link
                         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
                         rel="stylesheet"
                     />
+                    <meta name="google-site-verification" content="UV7geI93Mq57Rr9EbvI-aUYGqWKS7E6iGUJv2TCa4cY" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+                <meta charSet="utf-8" />
+                <meta
+                    name="description"
+                    content="Agile Car Rental is a Rental company in St. Thomas, United States Virgin Islands. Offering the best vehicles for the area and incredible Deals including Cyril E King Airport Pick-Up, Unlimited Miles, Travel Partner package and more!"
+                />
+                <title>Agile Car Rental | St. Thomas Car Rentals Priced with you in mind </title>
+
+                <meta property="og:url" content="www.agilecarrental.com" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Agile Car Rental" />
+                <meta name="twitter:card" content="summary" />
+                <meta property="og:description" content="Let's get you, your Ideal Island vehicle! Book Now" />
+                <meta property="og:image" content={'url of image'} />
                 </Head>
                 <Sidebar isOpen={isOpen} toggle={toggle} />
                 <Navbar toggle={toggle}/>

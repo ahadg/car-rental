@@ -14,7 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
             description: item.description,
             main_text: item.structured_formatting.main_text,
             secondary_text: item.structured_formatting.main_text,
-            matched: item.structured_formatting.main_text_matched_substrings,
+            matched: item?.structured_formatting?.main_text_matched_substrings,
         }));
 
         res.status(200).json(places);

@@ -17,6 +17,10 @@ export interface IDate {
     time: number;
 }
 
+export interface ITime {
+    totaldays : number;
+}
+
 export interface ICheckin {
     firstName: string;
     lastName: string;

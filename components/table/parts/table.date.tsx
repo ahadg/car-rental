@@ -5,7 +5,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import React, { ReactElement } from 'react';
+import React, { ReactElement,useEffect,useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { totlaCheckinTime } from '../../../helpers/dateUtils';
@@ -16,6 +16,9 @@ import { useStyles } from '../table.srtyles';
 
 const Date = (): ReactElement => {
     const styles = useStyles();
+    const allstates : any = useSelector((state) => state);
+    const {Packagesstatus} : any = useSelector((state) => state);
+
     // car
     const car: ICar = useSelector(getSingleCarSelector);
 
@@ -23,6 +26,17 @@ const Date = (): ReactElement => {
     const dateFrom: IDate = useSelector(getCheckinFrom);
     const dateTo: IDate = useSelector(getCheckinTo);
     const total: number = totlaCheckinTime(dateFrom, dateTo);
+
+    const {checkin} : any = useSelector((state) => state);
+    let [theprice,settheprice] : any = useState(Number(allstates.checkin?.time?.totaldays * allstates.cars.single?.value?.price * 24 + allstates.checkin?.time?.totaldays * 7.50))
+    useEffect(() => {
+        let modprice = Number(allstates.checkin?.time?.totaldays * allstates.cars.single?.value?.price * 24 + allstates.checkin?.time?.totaldays * 7.50)
+        Packagesstatus.packagesstatus.map((item) => {
+            modprice = Number(modprice) + Number(item.price * allstates.checkin.time.totaldays)
+        })
+        console.log(modprice,modprice)
+        settheprice((Number(modprice)).toFixed(2))
+    },[allstates])
 
     return (
         <TableContainer className={styles.table} component={Paper}>
@@ -39,28 +53,29 @@ const Date = (): ReactElement => {
                         <TableCell className={styles.side} component="th" scope="row">
                             Start date:
                         </TableCell>
-                        <TableCell>{`${dateFrom.day}.${dateFrom.month}.${dateFrom.year} ${dateFrom.time}:00`}</TableCell>
+                        <TableCell>{`${dateFrom.month}.${dateFrom.day}.${dateFrom.year} ${allstates.checkin?.time?.timefrom}:00 ${allstates.checkin?.time?.ztimefrom}`}</TableCell>
                     </TableRow>
 
                     <TableRow>
                         <TableCell className={styles.side} component="th" scope="row">
                             End date:
                         </TableCell>
-                        <TableCell>{`${dateTo.day}.${dateTo.month}.${dateTo.year} ${dateTo.time}:00`}</TableCell>
+                        <TableCell>{`${dateTo.month}.${dateTo.day}.${dateTo.year} ${allstates.checkin?.time?.timeto}:00 ${allstates.checkin?.time?.ztimeto}`}</TableCell>
                     </TableRow>
 
                     <TableRow>
                         <TableCell className={styles.side} component="th" scope="row">
-                            Total rent time:
+                            Total rent days:
                         </TableCell>
-                        <TableCell>{`${total} hours`}</TableCell>
+                        <TableCell>{`${checkin.time.totaldays}`}</TableCell>
                     </TableRow>
 
                     <TableRow>
                         <TableCell className={styles.side} component="th" scope="row">
                             Total cost:
                         </TableCell>
-                        <TableCell>{`$${formatPrice(total * car.price)}`}</TableCell>
+                        <TableCell>{`$${theprice}`}</TableCell>
+                {/* <TableCell>{`$${formatPrice(checkin.time.totaldays * car.price * 24)}`}</TableCell> */}
                     </TableRow>
                 </TableBody>
             </Table>

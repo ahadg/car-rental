@@ -8,6 +8,11 @@ export interface IState {
         from: IDate;
         to: IDate;
         done: boolean;
+        time : {
+            time : number;
+            ztime : string;
+            totaldays : number
+        };
     };
     form: {
         firstName: string;
@@ -56,6 +61,11 @@ export const initialState: IState = {
         // 6 - The total time of booking must be more than 4 hours (2 + 4 = 6)
         to: createCustomDateObj(createInitDateObj(6)),
         done: false,
+        time : {
+            time : null,
+            ztime : '',
+            totaldays : null,
+        }
     },
     form: {
         firstName: '',

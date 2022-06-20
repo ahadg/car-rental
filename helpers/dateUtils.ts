@@ -27,6 +27,9 @@ export const isCorrectStart = (fromDate: IDate, dif: number): boolean =>
 export const isCorrectEnd = (fromDate: IDate, toDate: IDate, dif: number): boolean =>
     Math.ceil((createNativeDateObj(toDate).getTime() - createNativeDateObj(fromDate).getTime()) / 1000 / 60 / 60) >= dif;
 
+export const gettotalhours = (fromDate: IDate, toDate: IDate): number =>
+    Math.ceil((createNativeDateObj(toDate).getTime() - createNativeDateObj(fromDate).getTime()) / 1000 / 60 / 60);
+
 /*
  * Get tyme of begining
  **/

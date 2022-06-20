@@ -7,8 +7,10 @@ export const useStyles = makeStyles((theme: Theme) =>
             zIndex: 2,
             fontWeight: 600,
         },
+        
         subtitle: {
             position: 'relative',
+            textAlign:'left',
             zIndex: 2,
             fontSize: 22,
             paddingBottom: theme.spacing(2),
@@ -25,10 +27,10 @@ export const useStyles = makeStyles((theme: Theme) =>
             position: 'relative',
             marginTop: theme.spacing(5),
             padding: theme.spacing(8),
-            paddingTop: theme.spacing(30),
-            backgroundImage: 'url(/banner.jpg)',
+            paddingTop: theme.spacing(18),
+            backgroundImage: 'url(/strandedn.jpg)',
             backgroundSize: 'cover',
-            backgroundPosition: 'bottom',
+            backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             color: theme.palette.primary.contrastText,
             '&::before': {

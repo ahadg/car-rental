@@ -159,6 +159,7 @@ const Address = (): ReactElement => {
                                 <li>img</li>
                                 <li>Title</li>
                                 <li>Text</li>
+                                <li>Extras</li>
                             </ul>
                         </div>
                         <div>
@@ -176,15 +177,19 @@ const Address = (): ReactElement => {
                                     <li>{item.totalCost}</li>
                                     <li>
                                         {item.from ? item.from.day : ''}.{item.from ? item.from.month : ''}.
-                                        {item.from ? item.from.year : ''} {item.from ? item.from.time : ''}:00 --{' '}
+                                        {item.from ? item.from.year : ''} {item.from ? item.time?.timefrom : ''}:00 {item.time?.ztimefrom} --{' '}
                                         {item.to ? item.to.day : ''}.{item.from ? item.to.month : ''}.
-                                        {item.from ? item.to.year : ''} {item.from ? item.to.time : ''}:00
+                                        {item.from ? item.to.year : ''} {item.from ? item.time?.timeto : ''}:00 {item.time?.ztimeto}
                                     </li>
                                     <li>
                                         <img style={{ width: 100 }} src={`./${item.img}`} alt="Logo" />
                                     </li>
                                     <li>{item.title}</li>
                                     <li>{item.text}</li>
+                                    <li>{
+                                         item.extrapackages?.map((item) => `${item.heading}-`)
+                                     }
+                                    </li>
                                 </ul>
                             ))}
                         </div>

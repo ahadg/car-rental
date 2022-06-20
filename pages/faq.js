@@ -7,24 +7,48 @@ const data = {
     title: "Agile FAQ's",
     rows: [
       {
-        title: "Does Agile charge a deposit?",
-        content: "Yes, you will be charged a deposit. "
+        title: "Can I use my international driver's license?",
+        content: "Valid drivers licenses issued in your state or country is acceptable as well as international licenses. "
       },
       {
-        title: "What are the requirements to rent a car?",
-        content: "Copy of a valid ID or passport, Drivers License with a credit or debit card."
+        title: "Do I need insurance?",
+        content: "Yes, Insurance is required by law. "
+      },
+      {
+        title: "What are your age requirements?",
+        content: "You have to be at least 21 years of age to rent a vehicle. "
+      },
+      {
+        title: "Do you pick up and drop off customers?",
+        content: "Yes, we have a service to pick up and drop off customers for rentals."
+      },
+      {
+        title: "Do you deliver and pick up the vehicle?",
+        content: "Yes, we do provide these services. "
+      },
+      {
+        title: "Do you pick up at the airport?",
+        content: "Yes, we pick up from the airport and deliver to the airport. "
+      },
+      {
+        title: "Do you deliver at the hotels?",
+        content: "Yes, we do deliver at hotels but customer needs to be present to sign your rental contract. "
       },
       {
         title: "How do I pay?",
-        content: "You can call us at (340) 626-9224 and we can arrange payment processing, or you can pay online."
+        content: "You can call us at (340) 626-9224 / (954) 390-1560 and we can arrange payment processing, or you can pay online."
       },
       {
         title: "Is a deposit required when I book?",
-        content: "Yes, you will be charged a deposit prior to the release of the car."
+        content: "Yes, a deposit is required for security puposes. The amount of the requested deposit will be returned to you."
       },
       {
-        title: "How many miles do i get per day?",
-        content: "Agile offers unlimited driving miles with our vehicles."
+        title: "How much is the deposit?",
+        content: "The deposits is based on the type of vehicle, usually from $500.00 for credit card. "
+      },
+      {
+        title: "How many miles do I get per day?",
+        content: "Agile offers unlimited driving miles with rented vehicles."
       },
       {
         title: "Can I travel to St. John with the car?",
@@ -47,24 +71,20 @@ const data = {
         content: "No fees are charged for booking modifications or cancellations."
       },
       {
+        title: "Do you offer accessories with your rentals?",
+        content: "We do have accessories that can be rented with the vehicles. The accessories are a baby seat and GPS systems. "
+      },
+      {
         title: "Can I pre-pay my rental?",
         content: "Yes you can."
       },
       {
-        title: "Can I pay with cash?",
-        content: "Yes, you can pay with cash. However, to release a car to you at rental pickup time, you must provide a deposit using a credit card."
+        title: "What forms of payment do you accept?",
+        content: "You can pay cash, check, credit card, travels check, or debit card."
       },
       {
         title: "Can I use another person's credit card with their permission? ",
-        content: "No. At the time of rental, the renter is required to present a valid driver's license and credit card with his/her name imprinted on it. The name on the credit/debit card MUST match the name on the drivers license."
-      },
-      {
-        title: "Do you deliver vehicles?",
-        content: "Yes, we can make delivery arrangments prior to your booking date. "
-      },
-      {
-        title: "Do you offer a pick-up service?",
-        content: "We offer free pick-up services, you can arrange to be picked up prior to your booking date. "
+        content: "Yes, but the card holder must be present themselves with proper I.D. to sign the rental contract."
       },
     ]
   }

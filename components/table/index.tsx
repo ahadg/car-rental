@@ -11,7 +11,7 @@ const FinalTable = (): ReactElement => (
         <Car />
         <Date />
         <Location />
-    </>
+    </> 
 );
 
 export default FinalTable;

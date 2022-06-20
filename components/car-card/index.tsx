@@ -19,13 +19,13 @@ import useStyles from './car-card.styles';
 const CarCard = (): ReactElement => {
     const styles = useStyles();
     const cars: ICar[] = useSelector(getCarsListSelector);
-    console.log('cars',cars)
+    //console.log('cars',cars)
     return (
         <Grid className={styles.container} container spacing={5}>
             {cars.map(({ id, title, text, price, img, rating }) => (
                 <Grid item xs={12} sm={6} lg={4} key={id}>
                     <Card className={styles.root}>
-                        <CardHeader title={title} subheader={price + ' $/hour'} />
+                        <CardHeader title={title} subheader={price * 24 + ' $/day'} />
 
                         <CardMedia className={styles.media} image={img} title={title} />
 
