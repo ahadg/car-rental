@@ -11,7 +11,9 @@ export interface IState {
         time : {
             time : number;
             ztime : string;
-            totaldays : number
+            totaldays : number;
+            timefrom : number;
+            timeto : number;
         };
     };
     form: {
@@ -65,6 +67,8 @@ export const initialState: IState = {
             time : null,
             ztime : '',
             totaldays : null,
+            timefrom : null,
+            timeto : null,
         }
     },
     form: {

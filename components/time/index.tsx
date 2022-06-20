@@ -33,7 +33,7 @@ const Time = ({ title, track = 'normal', onChange,setztime,ztime,settime,time }:
             <Typography className={styles.title2} variant="h5" component="h3">
                 <div className={styles.time2}>
                    <AccessTime style={{fontSize : 30,marginRight : 6}}/> 
-                   <div> {time+':00 '}{ztime} </div>
+                   <div>{time ? time+':00 ' : 'Please Choose time'}{ztime} </div>
                 </div>
             </Typography>
             <Grid className={styles.slider} item xs>
