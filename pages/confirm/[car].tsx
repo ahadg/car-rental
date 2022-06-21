@@ -219,14 +219,17 @@ const Confirm = (): ReactElement => {
         if(!checked){
           return dispatch(open('Please accept term & conditions'))
         }
-        let modprice = Number(allstates.checkin?.time?.totaldays * allstates.cars.single?.value?.price * 24 + allstates.checkin?.time?.totaldays *7.50)
+        //let modprice = Number(allstates.checkin?.time?.totaldays * allstates.cars.single?.value?.price * 24 + allstates.checkin?.time?.totaldays *7.50)
+        let modprice = Number(allstates.checkin?.time?.totaldays * allstates.cars.single?.value?.price * 24 + allstates.checkin?.time?.totaldays * 7.50)
         Packagesstatus.packagesstatus.map((item) => {
-           // modprice = Number(modprice) + Number(item.price)
+            modprice = Number(modprice) + Number(item.price * allstates.checkin.time.totaldays)
         })
+        console.log(modprice,modprice)
+        //settheprice((Number(modprice)).toFixed(2))
         dispatch(Loader.start());
-        console.log({...form, ...car, total, totalCost, extrapackages :  Packagesstatus.packagesstatus })
+        console.log({...form, ...car, total, totalCost,"totalprice" : (Number(modprice)).toFixed(2), extrapackages :  Packagesstatus.packagesstatus })
         axios
-            .post(process.env.NEXT_PUBLIC_ORIGIN + '/confirm', { ...form, ...car, total ,time : allstates.checkin?.time,totalcost : modprice,extrapackages :  Packagesstatus.packagesstatus  , totalCost : Number(modprice).toFixed(2),...date,...place })
+            .post(process.env.NEXT_PUBLIC_ORIGIN + '/confirm', { ...form, ...car, total ,time : allstates.checkin?.time,totalcost : modprice,extrapackages :  Packagesstatus.packagesstatus  ,totalprice :  (Number(modprice)).toFixed(2), totalCost : Number(modprice).toFixed(2),...date,...place })
             .then(() => {
                 dispatch(Loader.end());
                 dispatch(Success.open(success));

@@ -50,10 +50,10 @@ const SingleCar = (): ReactElement => {
                     </Typography>
 
                     <Typography className={styles.date} variant="body2" color="textSecondary" component="p">
-                        {`Start date: ${dateFrom.month}/${dateFrom.day}/${dateFrom.year} ${dateFrom.time}:00`}
+                        {`Start date: ${dateFrom.month+1}/${dateFrom.day}/${dateFrom.year} ${dateFrom.time}:00`}
                     </Typography>
                     <Typography className={styles.date} variant="body2" color="textSecondary" component="p">
-                        {`End date: ${dateTo.month}/${dateTo.day}/${dateTo.year} ${dateTo.time}:00`}
+                        {`End date: ${dateTo.month+1}/${dateTo.day}/${dateTo.year} ${dateTo.time}:00`}
                     </Typography>
                 </Grid>
             </Grid>

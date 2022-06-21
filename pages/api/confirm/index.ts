@@ -14,7 +14,7 @@ const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
 const REFRESH_TOKEN = '1//047JqZVsaQmo7CgYIARAAGAQSNwF-L9IrjxYtnY7tXHc17YosbsglU-l9pQkWCyQ7VbccOAxg0l0KzJU320ZBqRdtp5KyC9q-RpQ';
 
 export default async function (req: NextApiRequest, res: NextApiResponse): Promise<void> {
-    const { firstName, lastName, img, email, title, text, price, total,time, totalcost, from, to, phone, description,extrapackages, totaldays } = req.body;
+    const { firstName, lastName, img, email, title, text, price, total,time, totalcost, from, to, phone, description,extrapackages, totaldays,totalprice } = req.body;
     // console.log( firstName, lastName, img, email, title, text, price, total, totalCost,date)
     console.log('date', req.body);
     fs.readFile('./assets/orders.json', 'utf-8', (err, jsonString) => {
@@ -131,11 +131,10 @@ export default async function (req: NextApiRequest, res: NextApiResponse): Promi
                                         return `<td>${item.heading} : $${item.price * time.totaldays}</td>`
                                     })}
                                 </tr>
+                             
                                 <tr>
-                                    <th>Total + Taxes and Fees:</th>
-                                    ${extrapackages.map((item) => {
-                                        return `<td>$${item.price * time.totaldays + totalcost}</td>`
-                                    })}
+                                    <th>Total cost :</th>
+                                    ${totalprice}
                                 </tr>
                                 
                             </table>

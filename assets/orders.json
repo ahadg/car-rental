@@ -1,5 +1,146 @@
 [
   {
+    "firstName": "muhammad",
+    "lastName": "ahad",
+    "img": "CompactSUV.png",
+    "email": "muhmmadahad594@gmail.com",
+    "phone": "234234234234",
+    "title": "Compact SUV",
+    "text": "Nissan Kicks or similar.",
+    "price": 4.5,
+    "total": 28,
+    "totalcost": 394.98,
+    "from": {
+      "year": 2022,
+      "month": 5,
+      "day": 22,
+      "time": 23
+    },
+    "to": {
+      "year": 2022,
+      "month": 5,
+      "day": 24,
+      "time": 3
+    },
+    "place": "Multan, Pakistan",
+    "extrapackages": [
+      {
+        "heading": "Loss Damage Waiver (LDW)",
+        "title": "Protects you from theft, and if the rented car is accidentally damaged.",
+        "price": 26.99,
+        "payment": "Day"
+      },
+      {
+        "heading": "Travel Partner ",
+        "title": "Assistance and support for many of your travel needs, Including translations, medical professional services, lost luggage, directory inquiries, real-time flight updates and local bookings.",
+        "price": 55,
+        "payment": "Day"
+      }
+    ],
+    "time": {
+      "totaldays": 2,
+      "ztimefrom": "PM",
+      "timefrom": 12,
+      "ztimeto": "PM",
+      "timeto": 12,
+      "totalhours": 48
+    }
+  },
+  {
+    "firstName": "muhammad",
+    "lastName": "ahad",
+    "img": "standard.jpg",
+    "email": "muhmmadahad594@gmail.com",
+    "phone": "234234234234",
+    "title": "Standard",
+    "text": "Toyota Corolla or similar.",
+    "price": 3.625,
+    "total": 22,
+    "totalcost": 94.5,
+    "from": {
+      "year": 2022,
+      "month": 5,
+      "day": 21,
+      "time": 23
+    },
+    "to": {
+      "year": 2022,
+      "month": 5,
+      "day": 22,
+      "time": 21
+    },
+    "place": "",
+    "extrapackages": [
+      {
+        "heading": "Loss Damage Waiver (LDW)",
+        "title": "Protects you from theft, and if the rented car is accidentally damaged.",
+        "price": 26.99,
+        "payment": "Day"
+      },
+      {
+        "heading": "Travel Partner ",
+        "title": "Assistance and support for many of your travel needs, Including translations, medical professional services, lost luggage, directory inquiries, real-time flight updates and local bookings.",
+        "price": 55,
+        "payment": "Day"
+      }
+    ],
+    "time": {
+      "totaldays": 1,
+      "ztimefrom": "PM",
+      "timefrom": 12,
+      "ztimeto": "PM",
+      "timeto": 12,
+      "totalhours": 24
+    }
+  },
+  {
+    "firstName": "muhammad",
+    "lastName": "ahad",
+    "img": "standard.jpg",
+    "email": "muhmmadahad594@gmail.com",
+    "phone": "234234234234",
+    "title": "Standard",
+    "text": "Toyota Corolla or similar.",
+    "price": 3.625,
+    "total": 22,
+    "totalcost": 94.5,
+    "from": {
+      "year": 2022,
+      "month": 5,
+      "day": 21,
+      "time": 23
+    },
+    "to": {
+      "year": 2022,
+      "month": 5,
+      "day": 22,
+      "time": 21
+    },
+    "place": "",
+    "extrapackages": [
+      {
+        "heading": "Loss Damage Waiver (LDW)",
+        "title": "Protects you from theft, and if the rented car is accidentally damaged.",
+        "price": 26.99,
+        "payment": "Day"
+      },
+      {
+        "heading": "Travel Partner ",
+        "title": "Assistance and support for many of your travel needs, Including translations, medical professional services, lost luggage, directory inquiries, real-time flight updates and local bookings.",
+        "price": 55,
+        "payment": "Day"
+      }
+    ],
+    "time": {
+      "totaldays": 1,
+      "ztimefrom": "PM",
+      "timefrom": 12,
+      "ztimeto": "PM",
+      "timeto": 12,
+      "totalhours": 24
+    }
+  },
+  {
     "firstName": "muhammad ahad",
     "lastName": "ahad",
     "img": "comfort.jpg",
