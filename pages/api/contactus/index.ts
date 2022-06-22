@@ -14,8 +14,8 @@ const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
 const REFRESH_TOKEN = '1//047JqZVsaQmo7CgYIARAAGAQSNwF-L9IrjxYtnY7tXHc17YosbsglU-l9pQkWCyQ7VbccOAxg0l0KzJU320ZBqRdtp5KyC9q-RpQ';
 
 export default async function (req: NextApiRequest, res: NextApiResponse): Promise<void> {
-    const { firstName, lastName,  email, themessage } = req.body;
-    // console.log( firstName, lastName, img, email, title, text, price, total, totalCost,date)
+    const { firstname, lastname,  email, themessage } = req.body;
+    console.log(req.body)
 
     const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
     oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
@@ -44,7 +44,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse): Promi
                 from: 'Agile Car Rental <agilecarrental@gmail.com>',
                 to: 'agilecarrental@gmail.com',
                 bcc: 'Agile Car Rental <agilecarrental@gmail.com>',
-                subject: `Contact us request from ${firstName} ${lastName}`,
+                subject: `Contact us request from ${firstname} ${lastname}`,
                 html: `
                 <style>
                     .car-rent-container{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background-color:#f1f1f1;font-size:10px}
@@ -60,17 +60,17 @@ export default async function (req: NextApiRequest, res: NextApiResponse): Promi
                 </style>
                 <div class="car-rent-container">
                     <div class="car-rent-wrp">
-                        <h3>Request from ${firstName} ${lastName}</h3>
+                        <h3>Request from ${firstname} ${lastname}</h3>
                         <div class="car-rent-general">
                             <h4>Contactus Description:</h4>
                             <table style="width: 100%;">
                                 <tr>
                                     <th>First name:</th>
-                                    <td>${firstName}</td>
+                                    <td>${firstname}</td>
                                 </tr>
                                 <tr>
                                     <th>Last name:</th>
-                                    <td>${lastName}</td>
+                                    <td>${lastname}</td>
                                 </tr>
                                 <tr>
                                     <th>User Email:</th>
