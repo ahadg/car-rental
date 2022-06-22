@@ -88,15 +88,15 @@ export default async function (req: NextApiRequest, res: NextApiResponse): Promi
             `,
             };
 
-            // transporter.sendMail(message, async (error, info) => {
-            //     if (error) {
-            //         console.log('Error while sending email',error);
-            //         await res.status(500).json({ message: `Error occurred`, error });
-            //     } else {
-            //         console.log('Email sent: ' + info.response);
-            //         await res.status(200).json(req);
-            //     }
-            // });
+            transporter.sendMail(message, async (error, info) => {
+                if (error) {
+                    console.log('Error while sending email',error);
+                    await res.status(500).json({ message: `Error occurred`, error });
+                } else {
+                    console.log('Email sent: ' + info.response);
+                    await res.status(200).json(req);
+                }
+            });
         } catch (error) {
             console.log(error);
         }
