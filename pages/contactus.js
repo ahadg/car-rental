@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
-
+import axios from 'axios';
+import * as Loader from '../components/loader/loader.actions';
+import { useDispatch, useSelector } from 'react-redux';
+import * as Warn from '../components/modal/modal.actions';
 const contactus = () => {
+    const [firstname,setfirstname] = useState('')
+    const [lastname,setlastname] = useState('')
+    const [email,setemail] = useState('')
+    const [themessage,setthemessage] = useState('')
+    const warn = 'Network error, please try again later';
+    const success = 'Your contact us request has been email to admin';
+    const dispatch = useDispatch();
+    const handleClickConfirm = () => {
+        axios
+            .post(process.env.NEXT_PUBLIC_ORIGIN + '/contactus', {firstname,lastname,email,themessage })
+            .then(() => {
+                dispatch(Loader.end());
+                dispatch(Success.open(success));
+            })
+            .catch(error => {
+                dispatch(Loader.end());
+                dispatch(Warn.open(warn));
+                console.log(error);
+            });
+    };
     return (
         <div
             style={{
@@ -48,6 +71,7 @@ const contactus = () => {
                                 type="text"
                                 className="txt"
                                 style={{ padding: '10px 8px', width: '280px', fontSize: '16px' }}
+                                onChange={(e) => setfirstname(e.target.value)}
                             />
                         </div>
                         <div className="field" style={{ display: 'flex', flexDirection: 'column', marginBottom: '12px' }}>
@@ -58,6 +82,7 @@ const contactus = () => {
                                 type="text"
                                 className="txt"
                                 style={{ padding: '10px 8px', width: '280px', fontSize: '16px' }}
+                                onChange={(e) => setlastname(e.target.value)}
                             />
                         </div>
                         <div className="field" style={{ display: 'flex', flexDirection: 'column', marginBottom: '12px' }}>
@@ -68,6 +93,7 @@ const contactus = () => {
                                 type="email"
                                 className="txt"
                                 style={{ padding: '10px 8px', width: '280px', fontSize: '16px' }}
+                                onChange={(e) => setemail(e.target.value)}
                             />
                         </div>
                         <div className="field" style={{ display: 'flex', flexDirection: 'column', marginBottom: '12px' }}>
@@ -78,10 +104,12 @@ const contactus = () => {
                                 type="text"
                                 className="txt"
                                 style={{ padding: '10px 8px', height: '100px', width: '280px', fontSize: '16px' }}
+                                onChange={(e) => setthemessage(e.target.value)}
                             />
                         </div>
                         <div className="action" style={{ padding: '20px 0', display: 'flex' }}>
                             <button
+                                onClick={handleClickConfirm}
                                 style={{
                                     padding: '12px 22px',
                                     border: '1px solid #01bf71',

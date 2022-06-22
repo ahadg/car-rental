@@ -14,41 +14,9 @@ const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
 const REFRESH_TOKEN = '1//047JqZVsaQmo7CgYIARAAGAQSNwF-L9IrjxYtnY7tXHc17YosbsglU-l9pQkWCyQ7VbccOAxg0l0KzJU320ZBqRdtp5KyC9q-RpQ';
 
 export default async function (req: NextApiRequest, res: NextApiResponse): Promise<void> {
-    const { firstName, lastName, img, email, title, text, price, total,time, totalcost, from, to, phone, description,extrapackages, totaldays,totalprice } = req.body;
+    const { firstName, lastName,  email, themessage } = req.body;
     // console.log( firstName, lastName, img, email, title, text, price, total, totalCost,date)
-    console.log('date', req.body);
-    fs.readFile('./assets/orders.json', 'utf-8', (err, jsonString) => {
-        if (err) {
-            console.log('err', err);
-        } else {
-            try {
-                const parsedjson = JSON.parse(jsonString);
-                parsedjson.unshift({
-                    firstName,
-                    lastName,
-                    img,
-                    email,
-                    phone,
-                    title,
-                    text,
-                    price,
-                    total,
-                    totalcost,
-                    from,
-                    to,
-                    place: description,
-                    extrapackages,
-                    time,
-                    totaldays,
-                });
-                fs.writeFile('./assets/orders.json', JSON.stringify(parsedjson, null, 2), err => {
-                    console.log(err);
-                });
-            } catch (error) {
-                console.log(error);
-            }
-        }
-    });
+
     const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
     oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
     const sendMail = async () => {
@@ -74,9 +42,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse): Promi
 
             const message = {
                 from: 'Agile Car Rental <agilecarrental@gmail.com>',
-                to: email,
+                to: 'agilecarrental@gmail.com',
                 bcc: 'Agile Car Rental <agilecarrental@gmail.com>',
-                subject: `Rent a car "${title}" | Hello! ${firstName} ${lastName}`,
+                subject: `Contact us request from ${firstName} ${lastName}`,
                 html: `
                 <style>
                     .car-rent-container{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background-color:#f1f1f1;font-size:10px}
@@ -92,54 +60,28 @@ export default async function (req: NextApiRequest, res: NextApiResponse): Promi
                 </style>
                 <div class="car-rent-container">
                     <div class="car-rent-wrp">
-                        <h3>Hello! ${firstName} ${lastName}</h3>
-                        <h2>
-                            You have successfully booked a car with
-                            <a href="https://agilecarrental.com" target="_blank" rel="noopener noreferrer">
-                                Agile Car Rental   
-                            </a>
-                            &#127881; &#128663; &#128640;
-                        </h2>
-                        <img src="https://${req.headers.host}/${img}" alt="Reserved Vehicle" />
+                        <h3>Request from ${firstName} ${lastName}</h3>
                         <div class="car-rent-general">
-                            <h3>This message confirms your booking</h3>
-                            <h4>Reservation Description:</h4>
+                            <h4>Contactus Description:</h4>
                             <table style="width: 100%;">
                                 <tr>
-                                    <th>Car type:</th>
-                                    <td>${title}</td>
+                                    <th>First name:</th>
+                                    <td>${firstName}</td>
                                 </tr>
                                 <tr>
-                                    <th>Car Description:</th>
-                                    <td>${text}</td>
+                                    <th>Last name:</th>
+                                    <td>${lastName}</td>
                                 </tr>
                                 <tr>
-                                    <th>Date:</th>
-                                    <td>${from.month+1}.${from.day}.${from.year} ${time?.timefrom}:00 ${time?.ztimefrom} -- ${to.month+1}.${to.day}.${to.year}  ${time?.timeto}:00 ${time?.ztimeto}</td>
+                                    <th>User Email:</th>
+                                    <td>${email}</td>
                                 </tr>
                                 <tr>
-                                    <th>Price per Day:</th>
-                                    <td>$${price * 24}</td>
-                                </tr>
-                                <tr>
-                                    <th>Total Rent Days:</th>
-                                    <td>${time.totaldays} days</td>
-                                </tr>
-                                <tr>
-                                    <th>Packages :</th>
-                                    ${extrapackages.map((item) => {
-                                        return `<td>${item.heading} : $${item.price} * ${time.totaldays} days = $${item.price * time.totaldays}</td>`
-                                    })}
-                                </tr>
-                               
-                                <tr>
-                                    <th>Total cost :</th>
-                                    ${totalprice}
+                                    <th>Contact us reason:</th>
+                                    <td>${themessage}</td>
                                 </tr>
                                 
                             </table>
-                            <p>Thank you for booking with AGILE! You've already taken the first steps to an enjoyable vehicle experience. We will contact you @ ${email}-${phone} 24hrs prior to your reservation.</p>
-                            <p>Within 24 hours of your reservation, we'll reach out via call or email. </p>
                         </div>
                     </div>
                 </div>
