@@ -4,13 +4,14 @@ import axios from 'axios';
 import * as Loader from '../components/loader/loader.actions';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Warn from '../components/modal/modal.actions';
+import * as Success from '../components/success/success.actions';
 const contactus = () => {
     const [firstname,setfirstname] = useState('')
     const [lastname,setlastname] = useState('')
     const [email,setemail] = useState('')
     const [themessage,setthemessage] = useState('')
     const warn = 'Network error, please try again later';
-    const success = 'Your contact us request has been email to admin';
+    const success = 'Your contact us request has been sended to admin';
     const dispatch = useDispatch();
     const handleClickConfirm = () => {
         axios
