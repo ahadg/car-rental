@@ -7,7 +7,8 @@ import 'slick-carousel/slick/slick-theme.css';
 const ClientFeedback = () => {
     var settings = {
         dots: true,
-        infinite: true,
+        infinite: false,
+        autoplay: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
