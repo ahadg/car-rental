@@ -1,4 +1,10 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
+import './style.css';
+
+// Import css files
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -10,13 +16,10 @@ import Navbar from '../components/Navbar';
 import Sidebar from '../components/sidebar/sidebar';
 import Footer from '../components/Footer';
 
-
-
 import Loader from '../components/loader';
 import Modal from '../components/modal';
 import Success from '../components/success';
 import { useStore } from '../redux/store';
-
 
 const theme = createMuiTheme({
     palette: {
@@ -34,7 +37,7 @@ const theme = createMuiTheme({
 const CustomApp = ({ Component, pageProps }: AppProps): ReactElement => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => {
-        setIsOpen(!isOpen)
+        setIsOpen(!isOpen);
     };
 
     const store = useStore(pageProps.state);
@@ -49,26 +52,25 @@ const CustomApp = ({ Component, pageProps }: AppProps): ReactElement => {
                         rel="stylesheet"
                     />
                     <meta name="google-site-verification" content="UV7geI93Mq57Rr9EbvI-aUYGqWKS7E6iGUJv2TCa4cY" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
-                <meta charSet="utf-8" />
-                <meta
-                    name="description"
-                    content="Agile Car Rental is a Rental company in St. Thomas, United States Virgin Islands. Offering the best vehicles for the area and incredible Deals including Cyril E King Airport Pick-Up, Unlimited Miles, Travel Partner package and more!"
-                />
-                <title>Agile Car Rental | St. Thomas Car Rentals Priced with you in mind </title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <link rel="icon" href="/favicon.ico" />
+                    <meta charSet="utf-8" />
+                    <meta
+                        name="description"
+                        content="Agile Car Rental is a Rental company in St. Thomas, United States Virgin Islands. Offering the best vehicles for the area and incredible Deals including Cyril E King Airport Pick-Up, Unlimited Miles, Travel Partner package and more!"
+                    />
+                    <title>Agile Car Rental | St. Thomas Car Rentals Priced with you in mind </title>
 
-                <meta property="og:url" content="www.agilecarrental.com" />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content="Agile Car Rental" />
-                <meta name="twitter:card" content="summary" />
-                <meta property="og:description" content="Let's get you, your Ideal Island vehicle! Book Now" />
-                <meta property="og:image" content={'url of image'} />
+                    <meta property="og:url" content="www.agilecarrental.com" />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:title" content="Agile Car Rental" />
+                    <meta name="twitter:card" content="summary" />
+                    <meta property="og:description" content="Let's get you, your Ideal Island vehicle! Book Now" />
+                    <meta property="og:image" content={'url of image'} />
                 </Head>
                 <Sidebar isOpen={isOpen} toggle={toggle} />
-                <Navbar toggle={toggle}/>
+                <Navbar toggle={toggle} />
 
-                
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
                     <Modal />
@@ -76,7 +78,7 @@ const CustomApp = ({ Component, pageProps }: AppProps): ReactElement => {
                     <Success />
                     <Component {...pageProps} />
                 </ThemeProvider>
-                <Footer/>
+                <Footer />
             </PersistGate>
         </Provider>
     );

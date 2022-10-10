@@ -16,7 +16,7 @@ const Banner = (): ReactElement => {
                 <Grid item xs={12} md={6}>
                     <Typography className={styles.title} variant="h2" component="h2">
                         Allow AGILE to Help
-                        <br/>
+                        <br />
                     </Typography>
                     <Typography className={styles.subtitle} variant="subtitle2">
                         <ul>
@@ -36,7 +36,8 @@ const Banner = (): ReactElement => {
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <Typography className={styles.subtitle} variant="subtitle2">
-                        Our customers no longer struggle with the hassle of Rental Pickups. At Agile, we take that effort to make your vacation effortless.
+                        Our customers no longer struggle with the hassle of Rental Pickups. At Agile, we take that effort to make
+                        your vacation effortless.
                     </Typography>
                     <Typography className={styles.subtitle} variant="subtitle2">
                         Save up to 10% when rentals are longer than 3 days. Book Below!

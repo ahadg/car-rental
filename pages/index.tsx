@@ -9,6 +9,7 @@ import HeroSection from '../components/HeroSection';
 import Banner from '../components/banner';
 import BlackRect from '../components/black-rect';
 import CarCard from '../components/car-card';
+import ClientFeedback from '../components/ClientsFeedback';
 import * as Actions from '../components/car-card/car-card.actions';
 import { isAnalitic } from '../helpers/analitic';
 import { ICar } from '../interfaces/interfaces';
@@ -33,6 +34,7 @@ const Home = (): ReactElement => {
                 console.log(error.response);
             });
     }, []);
+
     return (
         <>
             <Head>
@@ -64,6 +66,7 @@ const Home = (): ReactElement => {
                 <Container maxWidth="lg">
                     <BlackRect />
                     <CarCard />
+                    <ClientFeedback />
                 </Container>
             </main>
         </>
