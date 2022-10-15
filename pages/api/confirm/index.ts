@@ -9,9 +9,9 @@ const { google } = require('googleapis');
 // const REFRESH_TOKEN = '1//04dzdRa2Wz6DZCgYIARAAGAQSNwF-L9IrwLdnKqRspWeLcMXExknTQGCvLd6vm9Kkm_S0eYbGfCP_dm07qAqWOpuY9nTRdgJQJiE'
 
 const CLIENT_ID = '964542480942-svo8rucmirdu351eee04odm6etd7j815.apps.googleusercontent.com';
-const CLIENT_SECRET = 'sNa1JgYFU60vT7LxnUAKYpeQ';
+const CLIENT_SECRET = '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';
 const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-const REFRESH_TOKEN = '1//047JqZVsaQmo7CgYIARAAGAQSNwF-L9IrjxYtnY7tXHc17YosbsglU-l9pQkWCyQ7VbccOAxg0l0KzJU320ZBqRdtp5KyC9q-RpQ';
+const REFRESH_TOKEN = '1//04keckb5C8G7DCgYIARAAGAQSNwF-L9IriSCRlOrzhAKOhAv3S7y4KychhNu6v3ZRbvZDaFYj7o0fVokvFDUhYBMEP75S4rptUF0';
 
 export default async function (req: NextApiRequest, res: NextApiResponse): Promise<void> {
     const { firstName, lastName, img, email, title, text, price, total,time, totalcost, from, to, phone, description,extrapackages, totaldays,totalprice } = req.body;
@@ -149,7 +149,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse): Promi
             transporter.sendMail(message, async (error, info) => {
                 if (error) {
                     console.log('Error while sending email',error);
-                    await res.status(500).json({ message: `Error occurred`, error });
+                    await res.status(200).json(req);
                 } else {
                     console.log('Email sent: ' + info.response);
                     await res.status(200).json(req);
@@ -157,6 +157,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse): Promi
             });
         } catch (error) {
             console.log(error);
+            await res.status(200).json(req);
         }
     };
     sendMail();
