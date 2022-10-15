@@ -44,6 +44,25 @@ const CheckinDate = (): ReactElement => {
     //     dispatch(checkinToDate(createCustomDateObj(date)));
     // },[])
 
+    // time handlers
+    const handleChangeTimeFrom = (ztime: any, time: any): void => {
+        // const customDateObj = { ...dateFrom, time };
+        // dispatch(checkinFromDate(customDateObj));
+        console.log("handleChangeTimeFrom",ztime,time)
+        dispatch(checkintime({ ...checkin.time, ztimefrom: ztime, timefrom: time }));
+    };
+
+    const handleChangeTimeTo = (ztime: any, time: any): void => {
+        //    const customDateObj = { ...dateTo, time };
+        //    dispatch(checkinToDate(customDateObj));
+        console.log("handleChangeTimeTo",ztime,time)
+        dispatch(checkintime({ ...checkin.time, ztimeto: ztime, timeto: time }));
+    };
+
+    const [disablecode,setdiablescode] = useState(true)
+
+
+    
     useEffect(() => {
         let from = new Date(createNativeDateObj(dateFrom)).getTime();
         let to = new Date(createNativeDateObj(dateTo)).getTime();
@@ -54,18 +73,6 @@ const CheckinDate = (): ReactElement => {
         dispatch(checkintime({ ...checkin.time, totaldays: diffDays }));
     }, [dateFrom, dateTo]);
 
-    // time handlers
-    const handleChangeTimeFrom = (ztime: any, time: any): void => {
-        // const customDateObj = { ...dateFrom, time };
-        // dispatch(checkinFromDate(customDateObj));
-        dispatch(checkintime({ ...checkin.time, ztimefrom: ztime, timefrom: time }));
-    };
-
-    const handleChangeTimeTo = (ztime: any, time: any): void => {
-        //    const customDateObj = { ...dateTo, time };
-        //    dispatch(checkinToDate(customDateObj));
-        dispatch(checkintime({ ...checkin.time, ztimeto: ztime, timeto: time }));
-    };
 
     const [ztimefrom, setztimefrom] = useState(checkin.time.ztimefrom);
     const [timefrom, settimefrom] = useState(checkin.time.timefrom);
@@ -74,12 +81,37 @@ const CheckinDate = (): ReactElement => {
     const [timeto, settimeto] = useState(checkin.time.timeto);
 
     useEffect(() => {
-        handleChangeTimeFrom(ztimefrom, timefrom);
+        if(!disablecode){
+            handleChangeTimeFrom(ztimefrom, timefrom);
+        }
+      
     }, [ztimefrom, timefrom]);
 
     useEffect(() => {
-        handleChangeTimeTo(ztimeto, timeto);
+        if(!disablecode){
+            handleChangeTimeTo(ztimeto, timeto);
+        }
     }, [ztimeto, timeto]);
+
+    useEffect(() => {
+        // var date = new Date();
+        // var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+        // var am_pm = date.getHours() >= 12 ? "PM" : "AM";
+        // console.log("am_pm",am_pm,hours)
+        // handleChangeTimeFrom(am_pm,hours)
+
+        function addHours(numOfHours, date = new Date()) {
+            date.setTime(date.getTime() + numOfHours * 60 * 60 * 1000);
+          
+            return date;
+          }
+        const result = addHours(2);
+        
+        var hours2 = new Date(result).getHours() > 12 ? new Date(result).getHours() - 12 : new Date(result).getHours();
+        var am_pm2 = new Date(result).getHours() >= 12 ? "PM" : "AM";
+        handleChangeTimeFrom(am_pm2,hours2)
+        setdiablescode(false)
+    },[])
 
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
