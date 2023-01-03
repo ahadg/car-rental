@@ -45,12 +45,11 @@ const ClientFeedback = () => {
         ],
     };
     const sliderData = [
-        { name: 'Muddasir', designation: 'Developer' },
-        { name: 'Zeez Soft', designation: 'Software Agency' },
-        { name: 'Carl Stevens', designation: 'Artist' },
-        { name: 'Muddasir', designation: 'UI/UX' },
-        { name: 'Muddasir', designation: 'Deringer' },
-        { name: 'Muddasir', designation: 'Tester' },
+        { name: 'KweenzWorld', designation: 'Google', description:'My  rental experience was worth 5-stars! 1. Khalai was super helpful with the entire process. Very polite and knowledgeable on everything. 2. The quality of the car was outstanding! Clean, low mileage and newer. 3. Love that they drop off and pick up the rental at your location. Definitely would recommend their rental services. Thank you once again!', image:'./kw.jpg' },
+        { name: 'Zarrin Ahmed', designation: 'Google', description:'I had a great experience with Agile Car Rental. The name says it all! I got a really good quote and hadd a brand new Corolla delivered right to me. The car was comfortable to drive, even on the hills of St. Thomas, and the service was exceptional. The owner, Mr. Vanterpool, gave some custom recommendations on places to got and it really helped me have a good vacation on island. It was my first time going around St. Thomas and now Agile Car Rental will be my go-to for anything i need. Would highly recommend to anyone!', image:'./za.jpg'},
+        { name: 'Tyler', designation: 'Google', description:'My car rental experience with agile car rentals was fantastic. The agile car representative appeared at meeting place fast and on time. I got my new brand new rental 2022 toyota corolla within the hour at a competitive price. All Agile car rental employees were nice and friendly. 10 out of 10 would recommend to anyone looking to rent a car on the island of St.Thomas USVI!', image:'./tf.png' },
+        
+
     ];
     return (
         <div className="client-feedback flex aic jc">
@@ -61,16 +60,14 @@ const ClientFeedback = () => {
                             <div>
                                 <div className="card flex flex-col">
                                     <div className="img flex aic jc">
-                                        <img src="./user-img.webp" className="user-img" />
+                                        <img src={item.image} className="user-img" />
                                     </div>
                                     <div className="quotation-sign flex aic jc">
                                         <img src="./quote.png" className="quote-img" />
                                     </div>
                                     <div className="desc flex aic">
                                         <p>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt modi fuga placeat
-                                            tenetur numquam natus unde iusto voluptatibus itaque, distinctio eius sequi dolorum
-                                            praesentium ratione necessitatibus. Doloribus quas numquam atque!
+                                            {item.description}
                                         </p>
                                     </div>
                                     <div className="user-info flex flex-col aic jc">

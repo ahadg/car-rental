@@ -18,7 +18,7 @@ const about = () => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta charSet="utf-8" />
                 <meta name="description" content="Agile Car Rental is a Rental company in St. Thomas, United States Virgin Islands. Offering the best vehicles for the area and incredible Deals including Cyril E King..." />
-                <title>About Page</title>
+                <title>Agile Car Rental | About Page</title>
                 <link rel='icon' href='/favicon.ico'/>
             </Head>
             {/* <h1>about</h1> */}
@@ -33,8 +33,7 @@ const about = () => {
       <Image src={Pic} alt='Home Page' width={180} height={70} /> 
 
       <p>
-      Agile LLC is a standard and licensed car Rental Company that offers a wide range of services that revolves around the car rental industry and other complementary services. We intend giving our customers every reason to always rent or lease of cars which is why we have customized our services, we want to be known as the rental company that truly care for her customers.
-      </p>
+      Located in the Caribbean Sea chain of the United States Virgin Islands, St. Thomas is a beautiful tropical destination for travelers with a taste for adventure. Renting a car in St. Thomas is one of the best ways to see the whole island, at your own pace. Charlotte Amalie, Saint Thomas has some of the district's top attractions as St. Thomas is home to several natural bays and historical sites, including Magens Bay, Brewers Bay, and Fort Christian. With Cyril E King Airport being an extremely hilly 7 miles from Magen's bay, a rental car from Agile is ideal for the territory. Securing a rental car from Agile Car Rentals is the way to go if you want to tour Saint Thomas or Saint John.      </p>
      
         </div>
         </div>

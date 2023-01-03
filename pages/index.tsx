@@ -58,6 +58,7 @@ const Home = (): ReactElement => {
             <HeroSection />
             <header>
                 <Container maxWidth="lg">
+                    <CarCard />
                     <Banner />
                 </Container>
             </header>
@@ -65,7 +66,6 @@ const Home = (): ReactElement => {
             <main>
                 <Container maxWidth="lg">
                     <BlackRect />
-                    <CarCard />
                     <ClientFeedback />
                 </Container>
             </main>

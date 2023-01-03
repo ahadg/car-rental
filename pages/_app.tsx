@@ -8,10 +8,11 @@ import 'slick-carousel/slick/slick-theme.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useState, useEffect } from 'react';
 import { Provider, useSelector } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
+import TagManager, {TagManagerArgs} from "react-gtm-module"
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/sidebar/sidebar';
 import Footer from '../components/Footer';
@@ -43,6 +44,14 @@ const CustomApp = ({ Component, pageProps }: AppProps): ReactElement => {
     const store = useStore(pageProps.state);
     const persistor = persistStore(store);
     // const activeStep = useSelector((state: IState): number => state.activeStep);
+    //GOOGLE TAG MANAGER
+    const gtmId = "GTM-P8CZPP9";
+    const tagManagerArgs: TagManagerArgs = {
+        gtmId,
+    };
+    useEffect(()=>{
+        TagManager.initialize(tagManagerArgs);
+    }, []);
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>

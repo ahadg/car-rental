@@ -8,7 +8,7 @@ const data = {
     rows: [
         {
             title: "Can I use my international driver's license?",
-            content: 'Valid drivers licenses issued in your state or country is acceptable as well as international licenses. ',
+            content: 'A valid drivers license, issued in your state or country is acceptable as well as international licenses to rent with us at Agile Car Rental. ',
         },
         {
             title: 'Do I need insurance?',
@@ -16,7 +16,7 @@ const data = {
         },
         {
             title: 'What are your age requirements?',
-            content: 'You have to be at least 21 years of age to rent a vehicle. ',
+            content: 'You have to be at least 21 years of age to rent a vehicle with us. ',
         },
         {
             title: 'Do you pick up and drop off customers?',
@@ -24,11 +24,11 @@ const data = {
         },
         {
             title: 'Do you deliver and pick up the vehicle?',
-            content: 'Yes, we do provide these services. ',
+            content: 'Yes, we provide free pick-up and drop-off once requested. ',
         },
         {
             title: 'Do you pick up at the airport?',
-            content: 'Yes, we pick up from the airport and deliver to the airport. ',
+            content: 'Yes, we pick up from and deliver to the airport. ',
         },
         {
             title: 'Do you deliver at the hotels?',
@@ -42,11 +42,11 @@ const data = {
         {
             title: 'Is a deposit required when I book?',
             content:
-                'Yes, a deposit is required for security puposes. The amount of the requested deposit will be returned to you.',
+                'Yes, a deposit of $400 is required for security puposes. The amount of the requested deposit will be returned to you upon the return of your rental vehicle.',
         },
         {
             title: 'How much is the deposit?',
-            content: 'The deposits is based on the type of vehicle, usually from $500.00 for credit card. ',
+            content: 'The deposits is based on the type of vehicle, usually from $400.00 for credit card, and $800 if paying in cash. ',
         },
         {
             title: 'How many miles do I get per day?',
@@ -59,7 +59,7 @@ const data = {
         {
             title: 'What happens if I get involved in an accident.',
             content:
-                'The hirer is responsible for paying insurance excess, should the waiver be declined the hirer is responsible for the full value of the car.',
+                'In the event of an accident make sure yourself and those involved are ok. Contact Agile and then contact the local police force. The hirer is responsible for paying insurance excess, should the waiver be declined the hirer is responsible for the full value of the car.',
         },
         {
             title: 'What happens if I get a traffic offence?',
@@ -112,7 +112,7 @@ const faq = () => {
     return (
         <MainContainer>
             <Head>
-                <title>FAQ Page</title>
+                <title>Agile Car Rental | FAQ Page</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 

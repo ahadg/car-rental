@@ -9,7 +9,7 @@ const termsandconditions = () => {
         >
 
             <Head>
-                <title>Terms and Conditions</title>
+                <title>Agile Car Rental | Terms and Conditions</title>
                 <link rel='icon' href='/favicon.ico'/>
             </Head>
          <div>

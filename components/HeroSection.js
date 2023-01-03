@@ -3,6 +3,7 @@ import React from 'react';
 import Button from "@material-ui/core/Button";
 import Link from 'next/link'
 import EventIcon from '@material-ui/icons/Event'
+import Type from "./Type"
 
 const HeroSection = ()  => {
 return(
@@ -16,9 +17,12 @@ return(
             opacity='0.73'
             >
 
-                <h1 style={{ color: 'white', fontSize: "3rem" }}>A Car <span style={{color: "orange"}}>Rental</span> Service That Makes  <span style={{color: "orange"}}>Travel</span> Easy.</h1>
-                <p style={{ color: 'white', fontSize: "1.5rem", fontFamily: "revert" }}> A trusted way to make your car rental <span style={{fontWeight:"800", fontStyle:'italic'}}> experience</span> in the Virgin Islands, the best.</p>
-               
+                <h1 style={{ color: 'white', fontSize: "3rem" }}>A Car <span style={{color: "orange"}}>Rental</span> Service That Makes  <span style={{color: "orange"}}>Travel</span> Easy.{" "}
+                <span className="wave" role="img" aria-labelledby="wave">
+                🏝️
+                </span></h1>
+                
+                <p style={{ color: 'white', fontSize: "1.5rem", fontFamily: "revert" }}><Type /></p>
                 <>
                 <Link href="/carsandservices" passHref>
                 <Button variant="contained" color="primary" size='medium'>

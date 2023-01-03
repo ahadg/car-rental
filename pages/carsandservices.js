@@ -8,7 +8,7 @@ const carsandservices = () => {
     return (
         <div>
             <Head>
-                <title>Cars and Services</title>
+                <title>Agile Car Rental | Cars and Services</title>
                 <link rel='icon' href='/favicon.ico'/>
             </Head>
             <div >

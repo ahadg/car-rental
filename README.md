@@ -49,7 +49,7 @@ yarn dev
 
 # push
 git add . 
-git commit -m "change email total"
+git commit -m "Landing Page Update"
 git push origin
 
 ```

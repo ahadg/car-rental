@@ -3,7 +3,8 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         container: {
-            marginBottom: theme.spacing(15),
+            marginTop: theme.spacing(0.5),
+            marginBottom: theme.spacing(3),
         },
         root: {
             height: '100%',

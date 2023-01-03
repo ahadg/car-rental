@@ -5,7 +5,7 @@ const privacypolicy = () => {
     return (
         <div style = {{ marginLeft : 30, marginRight: 30 }}>
             <Head>
-                <title>Privacy Policy</title>
+                <title>Agile Car Rental | Privacy Policy</title>
                 <link rel='icon' href='/favicon.ico'/>
             </Head>
             <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>  

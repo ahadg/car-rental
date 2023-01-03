@@ -6,13 +6,14 @@ export const useStyles = makeStyles((theme: Theme) =>
             position: 'relative',
             zIndex: 2,
             fontWeight: 600,
+            fontSize: 45,
         },
         
         subtitle: {
             position: 'relative',
             textAlign:'left',
             zIndex: 2,
-            fontSize: 22,
+            fontSize: 17,
             paddingBottom: theme.spacing(2),
         },
         container: {

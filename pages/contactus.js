@@ -37,7 +37,7 @@ const contactus = () => {
             }}
         >
             <Head>
-                <title>Contact Page</title>
+                <title>Agile Car Rental | Contact Page</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div
@@ -60,6 +60,14 @@ const contactus = () => {
                         Need to get in touch with us? Either fill out the from
                         <br /> with your inquiry or find the department email you'd
                         <br /> like to contact below
+                        <br />
+                        <br />
+                        <br />Contact us at:
+                        <br /><a href={`tel:+1340-626-9224`}>(340)626-9224</a> 
+                        <br /> <a href={`tel:+1954-390-1560`}>(954)390-1560</a>
+                        <br />
+                        <br />Email us at: 
+                        <br /><a href={`mailto:agilecarrental@gmail.com`}>@agilecarrental</a>
                     </div>
                 </div>
                 <div className="right" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 2 }}>

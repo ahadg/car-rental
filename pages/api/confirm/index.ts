@@ -138,8 +138,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse): Promi
                                 </tr>
                                 
                             </table>
-                            <p>Thank you for booking with AGILE! You've already taken the first steps to an enjoyable vehicle experience. We will contact you @ ${email}-${phone} 24hrs prior to your reservation.</p>
-                            <p>Within 24 hours of your reservation, we'll reach out via call or email. </p>
+                            <p>Thank you for booking with AGILE! You've already taken the first steps to an enjoyable vehicle experience. We will contact you @ ${email}-${phone} 24hrs to your reservation.</p>
+                            <p>We'll have a representative reach out via call or email for your driver's license and proof of insurance completing your reservation. </p>
                         </div>
                     </div>
                 </div>
