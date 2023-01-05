@@ -21,6 +21,8 @@ const SingleCar = (): ReactElement => {
     const total: number = totlaCheckinTime(dateFrom, dateTo);
     const {checkin} : any = useSelector((state) => state);
 
+    console.log("checkin",checkin)
+
     return (
         <>
             <Typography className={styles.title} variant="h5" component="h3">
