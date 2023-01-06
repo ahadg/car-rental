@@ -15,8 +15,8 @@ import Calendar from '../calendar';
 import Time from '../time';
 import { checkinFromDate, checkinToDate, checkintime } from './checkin-date.actions';
 import useStyles from './checkin-date.styles';
-import BasicDateRangePicker from './MuiDateRangePicker'
-import BasicTimePicker from './MuiTimePicker'
+import BasicDateRangePicker from './MuiDateRangePicker';
+import BasicTimePicker from './MuiTimePicker';
 // import './calender.css';
 
 const CheckinDate = (): ReactElement => {
@@ -29,7 +29,7 @@ const CheckinDate = (): ReactElement => {
     const dateTo: IDate = useSelector(getCheckinTo);
     const { checkin }: any = useSelector(state => state);
 
-    console.log('dateeee',{dateFrom,dateTo})
+    console.log('dateeee', { dateFrom, dateTo });
 
     // calendar handlers
     const handleChangeFrom = (date: Date): void => {
@@ -41,7 +41,7 @@ const CheckinDate = (): ReactElement => {
         dispatch(checkinToDate(createCustomDateObj(date)));
     };
 
-    const [calendopen,setcalendopen]  = useState(false)
+    const [calendopen, setcalendopen] = useState(false);
 
     // useEffect(() => {
     //     console.log('dates',dateFrom,dateTo)
@@ -58,41 +58,41 @@ const CheckinDate = (): ReactElement => {
 
     // time handlers
     const handleChangeTimeFrom = (ztime: any, time: any): void => {
-        setztimefrom(ztime)
-        settimefrom(time)
+        setztimefrom(ztime);
+        settimefrom(time);
     };
 
     const handleChangeTimeTo = (ztime: any, time: any): void => {
-        setztimeto(ztime)
-        settimeto(time)
+        setztimeto(ztime);
+        settimeto(time);
     };
 
-    const [disablecode,setdiablescode] = useState(true)
+    const [disablecode, setdiablescode] = useState(true);
 
-
-    
     useEffect(() => {
-        console.log('dateeee3',{
-            dateFromTimee : ztimefrom ?  ztimefrom == "PM" ? timefrom + 12 : timefrom : 0,
-            dateToTimee : ztimeto ?  ztimeto == "PM" ? timeto + 12 : timeto : 0,
-        })
-        let from = new Date(new Date(createNativeDateObj(dateFrom)).setHours(ztimefrom ?  ztimefrom == "PM" ? timefrom + 12 : timefrom : 0)).getTime();
-        let to = new Date(new Date(createNativeDateObj(dateTo)).setHours(ztimeto ?  ztimeto == "PM" ? timeto + 12 : timeto : 0)).getTime();
+        console.log('dateeee3', {
+            dateFromTimee: ztimefrom ? (ztimefrom == 'PM' ? timefrom + 12 : timefrom) : 0,
+            dateToTimee: ztimeto ? (ztimeto == 'PM' ? timeto + 12 : timeto) : 0,
+        });
+        let from = new Date(
+            new Date(createNativeDateObj(dateFrom)).setHours(ztimefrom ? (ztimefrom == 'PM' ? timefrom + 12 : timefrom) : 0),
+        ).getTime();
+        let to = new Date(
+            new Date(createNativeDateObj(dateTo)).setHours(ztimeto ? (ztimeto == 'PM' ? timeto + 12 : timeto) : 0),
+        ).getTime();
         const diffTime = Math.abs(from - to);
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        dispatch(checkintime({ ...checkin.time, totaldays: diffDays,ztimefrom, timefrom,ztimeto,timeto }));
-    }, [dateFrom, dateTo,ztimeto,timeto,ztimefrom,timefrom]);
-
+        dispatch(checkintime({ ...checkin.time, totaldays: diffDays, ztimefrom, timefrom, ztimeto, timeto }));
+    }, [dateFrom, dateTo, ztimeto, timeto, ztimefrom, timefrom]);
 
     useEffect(() => {
-        if(!disablecode){
+        if (!disablecode) {
             handleChangeTimeFrom(ztimefrom, timefrom);
         }
-      
     }, [ztimefrom, timefrom]);
 
     useEffect(() => {
-        if(!disablecode){
+        if (!disablecode) {
             handleChangeTimeTo(ztimeto, timeto);
         }
     }, [ztimeto, timeto]);
@@ -106,50 +106,52 @@ const CheckinDate = (): ReactElement => {
 
         function addHours(numOfHours, date = new Date()) {
             date.setTime(date.getTime() + numOfHours * 60 * 60 * 1000);
-          
+
             return date;
-          }
+        }
         const result = addHours(2);
-        
+
         var hours2 = new Date(result).getHours() > 12 ? new Date(result).getHours() - 12 : new Date(result).getHours();
-        var am_pm2 = new Date(result).getHours() >= 12 ? "PM" : "AM";
-        handleChangeTimeFrom(am_pm2,hours2)
-        setdiablescode(false)
-    },[])
+        var am_pm2 = new Date(result).getHours() >= 12 ? 'PM' : 'AM';
+        handleChangeTimeFrom(am_pm2, hours2);
+        setdiablescode(false);
+    }, []);
 
     // setTimeout(() => {
     //     // css-9yjdhh-MuiDialogContent-root
     //     let el = document.querySelector('.MuiDialogContent-root div:nth-child(1) div:nth-child(1)');
-       
+
     //     console.log("the_el",el)
     //     if(el) {
     //         el.innerHTML = '<div style="position: absolute; pointer-events: none; color: rgba(130, 130, 130, 0.62); z-index: 100000; width: 100%; text-align: center; bottom: 50%; right: 0px; letter-spacing: 5px; font-size: 24px;"></div>'
     //     }
-        
+
     // }, 5000);
-    useEffect(()=> {
+    useEffect(() => {
         setTimeout(() => {
             let el = document.querySelector('.MuiDialogContent-root div:nth-child(1) div:nth-child(1)');
 
-            console.log("the_el",el)
-            if(el) {
-                el.innerHTML = '<div style="position: absolute; pointer-events: none; color: rgba(130, 130, 130, 0.62); z-index: 100000; width: 100%; text-align: center; bottom: 50%; right: 0px; letter-spacing: 5px; font-size: 24px;"></div>'
+            console.log('the_el', el);
+            if (el) {
+                el.innerHTML =
+                    '<div style="position: absolute; pointer-events: none; color: rgba(130, 130, 130, 0.62); z-index: 100000; width: 100%; text-align: center; bottom: 50%; right: 0px; letter-spacing: 5px; font-size: 24px;"></div>';
             }
 
             let el2 = document.querySelector('.MuiPaper-root div:nth-child(1) div:nth-child(1)');
             //MuiPaper-root
-       
-            console.log("the_el",el)
-            if(el2) {
-                el2.innerHTML = '<div style="position: absolute; pointer-events: none; color: rgba(130, 130, 130, 0.62); z-index: 100000; width: 100%; text-align: center; bottom: 50%; right: 0px; letter-spacing: 5px; font-size: 24px;"></div>'
+
+            console.log('the_el', el);
+            if (el2) {
+                el2.innerHTML =
+                    '<div style="position: absolute; pointer-events: none; color: rgba(130, 130, 130, 0.62); z-index: 100000; width: 100%; text-align: center; bottom: 50%; right: 0px; letter-spacing: 5px; font-size: 24px;"></div>';
             }
         }, 100);
-    },[calendopen])
+    }, [calendopen]);
     //el.innerHTML = ''
 
     return (
         <>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Grid container spacing={matches ? 1 : 10}>
                 <Grid className={styles.container} item xs={12} md={6}>
                     <Typography className={styles.title} variant="h5" component="h3">
@@ -189,14 +191,14 @@ const CheckinDate = (): ReactElement => {
                     />
                 </Grid>
             </Grid>
-        </MuiPickersUtilsProvider>
-
-
-        <BasicDateRangePicker setcalendopen={setcalendopen} calendopen={calendopen}/>
-
-        <BasicTimePicker text={"Pick-up Time"}/>
-        to
-        <BasicTimePicker text={"ReturnTime"}/>
+        </MuiPickersUtilsProvider> */}
+            <Typography className={styles.title} variant="h5" component="h3">
+                Select Data & Time
+            </Typography>
+            <BasicDateRangePicker setcalendopen={setcalendopen} calendopen={calendopen} />
+            <BasicTimePicker text={'Pick-up Time'} />
+            <span style={{ marginLeft: '16px', marginRight: '16px' }}>to</span>
+            <BasicTimePicker text={'ReturnTime'} />
         </>
     );
 };

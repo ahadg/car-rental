@@ -6,31 +6,28 @@ import { LocalizationProvider } from '@mui/x-date-pickers-pro';
 import { AdapterDayjs } from '@mui/x-date-pickers-pro/AdapterDayjs';
 import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 
-export default function BasicDateRangePicker({setcalendopen,calendopen}) {
-  const [value, setValue] = React.useState([null, null]);
+export default function BasicDateRangePicker({ setcalendopen, calendopen }) {
+    const [value, setValue] = React.useState([null, null]);
 
-  return (
-    <LocalizationProvider
-      dateAdapter={AdapterDayjs}
-      localeText={{ start: 'Check-in', end: 'Check-out' }}
-    >
-      <DateRangePicker
-        value={value}
-        onChange={(newValue) => {
-          setValue(newValue);
-        }}
-        onOpen={() => {
-          console.log("onpeend")
-          setcalendopen(!calendopen)
-        }}
-        renderInput={(startProps, endProps) => (
-          <React.Fragment>
-            <TextField {...startProps} />
-            <Box sx={{ mx: 2 }}> to </Box>
-            <TextField {...endProps} />
-          </React.Fragment>
-        )}
-      />
-    </LocalizationProvider>
-  );
+    return (
+        <LocalizationProvider dateAdapter={AdapterDayjs} localeText={{ start: 'Pick-up Date', end: 'Return Date' }}>
+            <DateRangePicker
+                value={value}
+                onChange={newValue => {
+                    setValue(newValue);
+                }}
+                onOpen={() => {
+                    console.log('onpeend');
+                    setcalendopen(!calendopen);
+                }}
+                renderInput={(startProps, endProps) => (
+                    <React.Fragment>
+                        <TextField {...startProps} />
+                        <Box sx={{ mx: 2 }}> to </Box>
+                        <TextField {...endProps} />
+                    </React.Fragment>
+                )}
+            />
+        </LocalizationProvider>
+    );
 }
