@@ -23,7 +23,7 @@ export default function BasicDateRangePicker({ setcalendopen, calendopen }) {
                 renderInput={(startProps, endProps) => (
                     <React.Fragment>
                         <TextField {...startProps} />
-                        <Box sx={{ mx: 2 }}> to </Box>
+                        {/* <Box sx={{ mx: 2 }}>To</Box> */}
                         <TextField {...endProps} />
                     </React.Fragment>
                 )}

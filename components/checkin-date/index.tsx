@@ -195,10 +195,16 @@ const CheckinDate = (): ReactElement => {
             <Typography className={styles.title} variant="h5" component="h3">
                 Select Data & Time
             </Typography>
-            <BasicDateRangePicker setcalendopen={setcalendopen} calendopen={calendopen} />
-            <BasicTimePicker text={'Pick-up Time'} />
-            <span style={{ marginLeft: '16px', marginRight: '16px' }}>to</span>
-            <BasicTimePicker text={'ReturnTime'} />
+            <div className="date-time-picker-mui">
+                <div className="calender-side">
+                    <BasicDateRangePicker setcalendopen={setcalendopen} calendopen={calendopen} />
+                </div>
+                <div className="time-side">
+                    <BasicTimePicker text={'Pick-up Time'} />
+                    {/* <span style={{ marginLeft: '16px', marginRight: '16px' }}>to</span> */}
+                    <BasicTimePicker text={'ReturnTime'} />
+                </div>
+            </div>
         </>
     );
 };

@@ -275,10 +275,27 @@
     }
 }
 
+.date-time-picker-mui {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+.calender-side {
+    flex: 1;
+}
+.time-side {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
 .MuiDateRangePickerInput-root {
-    margin-top: 20px;
-    margin-bottom: 30px;
+    /* margin-top: 20px;
+    margin-bottom: 30px; */
+    flex-direction: column !important;
 }
 .MuiFormControl-root {
     width: 300px !important;
+    margin-bottom: 20px !important;
 }
