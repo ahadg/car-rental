@@ -9,7 +9,7 @@ interface IProps {
     onChange(date: Date): void;
 }
 
-const Calendar = ({ date, start, onChange }: IProps): ReactElement => (
+const Calendar = ({ date, start, onChange }): ReactElement => (
     <DatePicker
         minDate={createInitDateObj(start)}
         autoOk
