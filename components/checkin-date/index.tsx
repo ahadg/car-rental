@@ -19,7 +19,7 @@ import BasicDateRangePicker from './MuiDateRangePicker';
 import BasicTimePicker from './MuiTimePicker';
 // import './calender.css';
 
-const CheckinDate = (): ReactElement => {
+const CheckinDate = () => {
     const styles = useStyles();
     const matches = useMediaQuery('(max-width:1200px)');
 
@@ -28,7 +28,7 @@ const CheckinDate = (): ReactElement => {
     const dateFrom: IDate = useSelector(getCheckinFrom);
     const dateTo: IDate = useSelector(getCheckinTo);
     const { checkin }: any = useSelector(state => state);
-    const [muiDateValue,setmuiDateValue] = useState()
+    const [muiDateValue,setmuiDateValue] = useState({})
     const [muiPickupTimeValue,setPickupTimeValue] = useState()
     const [muiReturnValue,setReturnTimeValue] = useState()
     
@@ -60,12 +60,12 @@ const CheckinDate = (): ReactElement => {
 
     useEffect(() => {
       if(muiDateValue) {
-        if(muiDateValue[0]?.['$d'])  {
-            handleChangeFrom(muiDateValue[0]?.['$d']) 
+        if(muiDateValue?.[0]?.['$d'])  {
+            handleChangeFrom(muiDateValue?.[0]?.['$d']) 
         }
-        console.log(muiDateValue[0]?.['$d'],muiDateValue[1]?.['$d'])
-        if(muiDateValue[1]?.['$d']) {
-            handleChangeTo(muiDateValue[1]?.['$d']) 
+        console.log(muiDateValue?.[0]?.['$d'],muiDateValue?.[1]?.['$d'])
+        if(muiDateValue?.[1]?.['$d']) {
+            handleChangeTo(muiDateValue?.[1]?.['$d']) 
         }
         // handleChangeTo(muiDateValue[1]?.$d)
       }
