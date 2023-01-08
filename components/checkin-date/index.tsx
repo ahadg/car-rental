@@ -141,7 +141,7 @@ const CheckinDate = () => {
 
     return (
         <>
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Grid container spacing={matches ? 1 : 10}>
                 <Grid className={styles.container} item xs={12} md={6}>
                     <Typography className={styles.title} variant="h5" component="h3">
@@ -181,7 +181,7 @@ const CheckinDate = () => {
                     />
                 </Grid>
             </Grid>
-        </MuiPickersUtilsProvider>
+        </MuiPickersUtilsProvider> */}
             <Typography className={styles.title} variant="h5" component="h3">
                 Select Data & Time
             </Typography>
