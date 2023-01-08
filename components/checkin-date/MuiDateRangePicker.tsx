@@ -7,7 +7,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers-pro/AdapterDayjs';
 import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 
 export default function BasicDateRangePicker({ setcalendopen, calendopen,setmuiDateValue }) {
-    const [value, setValue] = React.useState([null, null]);
+    const [value, setValue] : any = React.useState([null, null]);
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} localeText={{ start: 'Pick-up Date', end: 'Return Date' }}>

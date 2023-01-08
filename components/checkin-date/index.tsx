@@ -60,23 +60,17 @@ const CheckinDate = (): ReactElement => {
 
     useEffect(() => {
       if(muiDateValue) {
-        if(muiDateValue[0]?.$d)  {
-            handleChangeFrom(muiDateValue[0]?.$d) 
+        if(muiDateValue[0]?.['$d'])  {
+            handleChangeFrom(muiDateValue[0]?.['$d']) 
         }
-        console.log(muiDateValue[0]?.$d,muiDateValue[1]?.$d)
-        if(muiDateValue[1]?.$d) {
-            handleChangeTo(muiDateValue[1]?.$d) 
+        console.log(muiDateValue[0]?.['$d'],muiDateValue[1]?.['$d'])
+        if(muiDateValue[1]?.['$d']) {
+            handleChangeTo(muiDateValue[1]?.['$d']) 
         }
         // handleChangeTo(muiDateValue[1]?.$d)
       }
     },[muiDateValue])
 
-    // useEffect(() => {
-    //     console.log('dates',dateFrom,dateTo)
-    //     let date = new Date()
-    //     date.setDate(date.getDate() + 1)
-    //     dispatch(checkinToDate(createCustomDateObj(date)));
-    // },[])
 
     const [ztimefrom, setztimefrom] = useState(checkin.time.ztimefrom);
     const [timefrom, settimefrom] = useState(checkin.time.timefrom || 1);
@@ -123,48 +117,6 @@ const CheckinDate = (): ReactElement => {
         });
     }, [dateFrom, dateTo, ztimeto, timeto, ztimefrom, timefrom,timefromminutes,timefromminutes]);
 
-    // useEffect(() => {
-    //     if (!disablecode) {
-    //         handleChangeTimeFrom(ztimefrom, timefrom);
-    //     }
-    // }, [ztimefrom, timefrom]);
-
-    // useEffect(() => {
-    //     if (!disablecode) {
-    //         handleChangeTimeTo(ztimeto, timeto);
-    //     }
-    // }, [ztimeto, timeto]);
-
-    useEffect(() => {
-        // var date = new Date();
-        // var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
-        // var am_pm = date.getHours() >= 12 ? "PM" : "AM";
-        // console.log("am_pm",am_pm,hours)
-        // handleChangeTimeFrom(am_pm,hours)
-
-        // function addHours(numOfHours, date = new Date()) {
-        //     date.setTime(date.getTime() + numOfHours * 60 * 60 * 1000);
-
-        //     return date;
-        // }
-        // const result = addHours(2);
-
-        // var hours2 = new Date(result).getHours() > 12 ? new Date(result).getHours() - 12 : new Date(result).getHours();
-        // var am_pm2 = new Date(result).getHours() >= 12 ? 'PM' : 'AM';
-        // handleChangeTimeFrom(am_pm2, hours2);
-        setdiablescode(false);
-    }, []);
-
-    // setTimeout(() => {
-    //     // css-9yjdhh-MuiDialogContent-root
-    //     let el = document.querySelector('.MuiDialogContent-root div:nth-child(1) div:nth-child(1)');
-
-    //     console.log("the_el",el)
-    //     if(el) {
-    //         el.innerHTML = '<div style="position: absolute; pointer-events: none; color: rgba(130, 130, 130, 0.62); z-index: 100000; width: 100%; text-align: center; bottom: 50%; right: 0px; letter-spacing: 5px; font-size: 24px;"></div>'
-    //     }
-
-    // }, 5000);
     useEffect(() => {
         setTimeout(() => {
             let el = document.querySelector('.MuiDialogContent-root div:nth-child(1) div:nth-child(1)');
