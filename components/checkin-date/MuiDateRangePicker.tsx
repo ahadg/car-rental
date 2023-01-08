@@ -6,7 +6,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers-pro';
 import { AdapterDayjs } from '@mui/x-date-pickers-pro/AdapterDayjs';
 import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 
-export default function BasicDateRangePicker({ setcalendopen, calendopen }) {
+export default function BasicDateRangePicker({ setcalendopen, calendopen,setmuiDateValue }) {
     const [value, setValue] = React.useState([null, null]);
 
     return (
@@ -15,6 +15,7 @@ export default function BasicDateRangePicker({ setcalendopen, calendopen }) {
                 value={value}
                 onChange={newValue => {
                     setValue(newValue);
+                    setmuiDateValue(newValue)
                 }}
                 onOpen={() => {
                     console.log('onpeend');

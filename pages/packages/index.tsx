@@ -80,12 +80,12 @@ const Packages = (props): ReactElement => {
                     <Grid className={styles.leftnest}>
                         <div className={styles.liteheading}>Pick-Up</div>
                         <div className={styles.litetitle}>{location?.description} </div>
-                        <div className={styles.litedate}>{`${strArray[new Date(createNativeDateObj(allstates.checkin.from)).getMonth()]} ${allstates.checkin.from.day} ${new Date(createNativeDateObj(allstates.checkin.from)).getFullYear()}`}, {allstates.checkin?.time?.timefrom}:00 {allstates.checkin?.time?.ztimefrom}</div>
+                        <div className={styles.litedate}>{`${strArray[new Date(createNativeDateObj(allstates.checkin.from)).getMonth()]} ${allstates.checkin.from.day} ${new Date(createNativeDateObj(allstates.checkin.from)).getFullYear()}`}, {allstates.checkin?.time?.timefrom}:{allstates.checkin?.time?.timefromminutes} {allstates.checkin?.time?.ztimefrom}</div>
                     </Grid>
                     <Grid  className={styles.leftnest2}>
                         <div className={styles.liteheading}>Return</div>
                         <div className={styles.litetitle}>{location?.description} </div>
-                        <div className={styles.litedate}>{`${strArray[new Date(createNativeDateObj(allstates.checkin.to)).getMonth()]} ${allstates.checkin.to.day} ${new Date(createNativeDateObj(allstates.checkin.to)).getFullYear()}`}, {allstates.checkin?.time?.timeto}:00 {allstates.checkin?.time?.ztimeto}</div>
+                        <div className={styles.litedate}>{`${strArray[new Date(createNativeDateObj(allstates.checkin.to)).getMonth()]} ${allstates.checkin.to.day} ${new Date(createNativeDateObj(allstates.checkin.to)).getFullYear()}`}, {allstates.checkin?.time?.timeto}:{allstates.checkin?.time?.timetominutes} {allstates.checkin?.time?.ztimeto}</div>
                     </Grid>
                    </div>
                     <div className={styles.headlinerow}>

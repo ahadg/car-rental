@@ -28,20 +28,48 @@ const CheckinDate = (): ReactElement => {
     const dateFrom: IDate = useSelector(getCheckinFrom);
     const dateTo: IDate = useSelector(getCheckinTo);
     const { checkin }: any = useSelector(state => state);
+    const [muiDateValue,setmuiDateValue] = useState()
+    const [muiPickupTimeValue,setPickupTimeValue] = useState()
+    const [muiReturnValue,setReturnTimeValue] = useState()
+    
 
-    console.log('dateeee', { dateFrom, dateTo });
+    console.log('muiDateValue', muiDateValue,{muiPickupTimeValue,muiReturnValue});
 
     // calendar handlers
     const handleChangeFrom = (date: Date): void => {
         const customDateObj = createCustomDateObj(date);
+        // {
+        //     "date": "2023-02-17T16:00:00.000Z",
+        //     "customDateObj": {
+        //         "year": 2023,
+        //         "month": 1,
+        //         "day": 17,
+        //         "time": 21
+        //     }
+        // }
+        console.log("handleChangeFrom",{date,customDateObj})
         dispatch(checkinFromDate(customDateObj));
     };
 
     const handleChangeTo = (date: Date): void => {
         dispatch(checkinToDate(createCustomDateObj(date)));
+        console.log("handleChangeFrom",{date,customDateObj : createCustomDateObj(date)})
     };
 
     const [calendopen, setcalendopen] = useState(false);
+
+    useEffect(() => {
+      if(muiDateValue) {
+        if(muiDateValue[0]?.$d)  {
+            handleChangeFrom(muiDateValue[0]?.$d) 
+        }
+        console.log(muiDateValue[0]?.$d,muiDateValue[1]?.$d)
+        if(muiDateValue[1]?.$d) {
+            handleChangeTo(muiDateValue[1]?.$d) 
+        }
+        // handleChangeTo(muiDateValue[1]?.$d)
+      }
+    },[muiDateValue])
 
     // useEffect(() => {
     //     console.log('dates',dateFrom,dateTo)
@@ -51,29 +79,36 @@ const CheckinDate = (): ReactElement => {
     // },[])
 
     const [ztimefrom, setztimefrom] = useState(checkin.time.ztimefrom);
-    const [timefrom, settimefrom] = useState(checkin.time.timefrom);
+    const [timefrom, settimefrom] = useState(checkin.time.timefrom || 1);
+    const [timefromminutes, settimefromminutes] = useState(checkin.time.timefromminutes || 1);
 
     const [ztimeto, setztimeto] = useState(checkin.time.ztimeto);
-    const [timeto, settimeto] = useState(checkin.time.timeto);
+    const [timeto, settimeto] = useState(checkin.time.timeto || 1);
+    const [timetominutes, settimetominutes] = useState(checkin.time.timetominutes || 1);
 
     // time handlers
-    const handleChangeTimeFrom = (ztime: any, time: any): void => {
-        setztimefrom(ztime);
-        settimefrom(time);
+    const handleChangeTimeFrom = (time: any): void => {
+        console.log("time",time)
+     
+        setztimefrom(time?.$H > 12 ? "PM" : 'AM');
+        settimefrom(time?.$H > 12 ? time?.$H - 12 : time?.$H);
+        settimefromminutes(time?.$m || 0)
     };
 
-    const handleChangeTimeTo = (ztime: any, time: any): void => {
-        setztimeto(ztime);
-        settimeto(time);
+    const handleChangeTimeTo = (time: any): void => {
+        console.log("time",time)
+        setztimeto(time?.$H > 12 ? "PM" : 'AM');
+        settimeto(time?.$H > 12 ? time?.$H - 12 : time?.$H);
+        settimetominutes(time?.$m || 0)
+        // setztimeto(ztime);
+        // settimeto(time);
     };
 
     const [disablecode, setdiablescode] = useState(true);
 
+    console.log("ztime__",{ztimefrom,timefrom,ztimeto,timeto})
+
     useEffect(() => {
-        console.log('dateeee3', {
-            dateFromTimee: ztimefrom ? (ztimefrom == 'PM' ? timefrom + 12 : timefrom) : 0,
-            dateToTimee: ztimeto ? (ztimeto == 'PM' ? timeto + 12 : timeto) : 0,
-        });
         let from = new Date(
             new Date(createNativeDateObj(dateFrom)).setHours(ztimefrom ? (ztimefrom == 'PM' ? timefrom + 12 : timefrom) : 0),
         ).getTime();
@@ -82,20 +117,23 @@ const CheckinDate = (): ReactElement => {
         ).getTime();
         const diffTime = Math.abs(from - to);
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        dispatch(checkintime({ ...checkin.time, totaldays: diffDays, ztimefrom, timefrom, ztimeto, timeto }));
-    }, [dateFrom, dateTo, ztimeto, timeto, ztimefrom, timefrom]);
+        dispatch(checkintime({ ...checkin.time, totaldays: diffDays, ztimefrom, timefrom, ztimeto, timeto,timefromminutes,timetominutes }));
+        console.log('dateeee3', {
+            totaldays: diffDays, ztimefrom, timefrom, ztimeto, timeto
+        });
+    }, [dateFrom, dateTo, ztimeto, timeto, ztimefrom, timefrom,timefromminutes,timefromminutes]);
 
-    useEffect(() => {
-        if (!disablecode) {
-            handleChangeTimeFrom(ztimefrom, timefrom);
-        }
-    }, [ztimefrom, timefrom]);
+    // useEffect(() => {
+    //     if (!disablecode) {
+    //         handleChangeTimeFrom(ztimefrom, timefrom);
+    //     }
+    // }, [ztimefrom, timefrom]);
 
-    useEffect(() => {
-        if (!disablecode) {
-            handleChangeTimeTo(ztimeto, timeto);
-        }
-    }, [ztimeto, timeto]);
+    // useEffect(() => {
+    //     if (!disablecode) {
+    //         handleChangeTimeTo(ztimeto, timeto);
+    //     }
+    // }, [ztimeto, timeto]);
 
     useEffect(() => {
         // var date = new Date();
@@ -104,16 +142,16 @@ const CheckinDate = (): ReactElement => {
         // console.log("am_pm",am_pm,hours)
         // handleChangeTimeFrom(am_pm,hours)
 
-        function addHours(numOfHours, date = new Date()) {
-            date.setTime(date.getTime() + numOfHours * 60 * 60 * 1000);
+        // function addHours(numOfHours, date = new Date()) {
+        //     date.setTime(date.getTime() + numOfHours * 60 * 60 * 1000);
 
-            return date;
-        }
-        const result = addHours(2);
+        //     return date;
+        // }
+        // const result = addHours(2);
 
-        var hours2 = new Date(result).getHours() > 12 ? new Date(result).getHours() - 12 : new Date(result).getHours();
-        var am_pm2 = new Date(result).getHours() >= 12 ? 'PM' : 'AM';
-        handleChangeTimeFrom(am_pm2, hours2);
+        // var hours2 = new Date(result).getHours() > 12 ? new Date(result).getHours() - 12 : new Date(result).getHours();
+        // var am_pm2 = new Date(result).getHours() >= 12 ? 'PM' : 'AM';
+        // handleChangeTimeFrom(am_pm2, hours2);
         setdiablescode(false);
     }, []);
 
@@ -151,7 +189,7 @@ const CheckinDate = (): ReactElement => {
 
     return (
         <>
-            {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Grid container spacing={matches ? 1 : 10}>
                 <Grid className={styles.container} item xs={12} md={6}>
                     <Typography className={styles.title} variant="h5" component="h3">
@@ -191,18 +229,18 @@ const CheckinDate = (): ReactElement => {
                     />
                 </Grid>
             </Grid>
-        </MuiPickersUtilsProvider> */}
+        </MuiPickersUtilsProvider>
             <Typography className={styles.title} variant="h5" component="h3">
                 Select Data & Time
             </Typography>
             <div className="date-time-picker-mui">
                 <div className="calender-side">
-                    <BasicDateRangePicker setcalendopen={setcalendopen} calendopen={calendopen} />
+                    <BasicDateRangePicker setcalendopen={setcalendopen} calendopen={calendopen} setmuiDateValue={setmuiDateValue} />
                 </div>
                 <div className="time-side">
-                    <BasicTimePicker text={'Pick-up Time'} />
+                    <BasicTimePicker text={'Pick-up Time'} setValuefunc={handleChangeTimeFrom} />
                     {/* <span style={{ marginLeft: '16px', marginRight: '16px' }}>to</span> */}
-                    <BasicTimePicker text={'ReturnTime'} />
+                    <BasicTimePicker text={'ReturnTime'} setValuefunc={handleChangeTimeTo}/>
                 </div>
             </div>
         </>
