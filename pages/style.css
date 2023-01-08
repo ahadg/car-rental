@@ -282,6 +282,7 @@
     justify-content: center;
     margin-top: 40px;
 }
+
 .calender-side {
     flex: 1;
 }
@@ -298,4 +299,11 @@
 .MuiFormControl-root {
     width: 300px !important;
     margin-bottom: 20px !important;
+}
+
+@media (max-width: 500px) {
+    .date-time-picker-mui {
+        flex-direction: column;
+        width: 100%;
+    }
 }
