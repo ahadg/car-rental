@@ -13,6 +13,7 @@ import formatPrice from '../../../helpers/priceFormate';
 import { ICar, IDate } from '../../../interfaces/interfaces';
 import { getCheckinFrom, getCheckinTo, getSingleCarSelector } from '../../../redux/selectors';
 import { useStyles } from '../table.srtyles';
+import { getFormatedNumber } from '../../../helpers/analitic';
 
 const Date = (): ReactElement => {
     const styles = useStyles();
@@ -53,14 +54,14 @@ const Date = (): ReactElement => {
                         <TableCell className={styles.side} component="th" scope="row">
                             Start date:
                         </TableCell>
-                        <TableCell>{`${dateFrom.month+1}.${dateFrom.day}.${dateFrom.year} ${allstates.checkin?.time?.timefrom}:${allstates.checkin?.time?.timefromminutes} ${allstates.checkin?.time?.ztimefrom}`}</TableCell>
+                        <TableCell>{`${dateFrom.month+1}.${dateFrom.day}.${dateFrom.year} ${getFormatedNumber(allstates.checkin?.time?.timefrom)}:${getFormatedNumber(allstates.checkin?.time?.timefromminutes)} ${allstates.checkin?.time?.ztimefrom}`}</TableCell>
                     </TableRow>
 
                     <TableRow>
                         <TableCell className={styles.side} component="th" scope="row">
                             End date:
                         </TableCell>
-                        <TableCell>{`${dateTo.month+1}.${dateTo.day}.${dateTo.year} ${allstates.checkin?.time?.timeto}:${allstates.checkin?.time?.timetominutes} ${allstates.checkin?.time?.ztimeto}`}</TableCell>
+                        <TableCell>{`${dateTo.month+1}.${dateTo.day}.${dateTo.year} ${getFormatedNumber(allstates.checkin?.time?.timeto)}:${getFormatedNumber(allstates.checkin?.time?.timetominutes)} ${allstates.checkin?.time?.ztimeto}`}</TableCell>
                     </TableRow>
 
                     <TableRow>

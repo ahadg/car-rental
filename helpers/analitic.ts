@@ -11,3 +11,14 @@ export const isAnalitic = (): boolean => {
         return true;
     }
 };
+
+
+
+export const getFormatedNumber = (number): String => {
+    if(number < 10) {
+        return `${0}${number}`
+    }
+    else {
+        return number
+    }
+};

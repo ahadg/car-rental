@@ -18,6 +18,7 @@ import {useStyles} from './packages.styles'
 import { IPlace } from '../../components/places/places.types';
 import { IState } from '../../redux/rootState';
 import MyStepper from '../../components/stepper';
+import { getFormatedNumber } from '../../helpers/analitic';
 
 const Packages = (props): ReactElement => {
     const dispatch = useDispatch();
@@ -80,12 +81,12 @@ const Packages = (props): ReactElement => {
                     <Grid className={styles.leftnest}>
                         <div className={styles.liteheading}>Pick-Up</div>
                         <div className={styles.litetitle}>{location?.description} </div>
-                        <div className={styles.litedate}>{`${strArray[new Date(createNativeDateObj(allstates.checkin.from)).getMonth()]} ${allstates.checkin.from.day} ${new Date(createNativeDateObj(allstates.checkin.from)).getFullYear()}`}, {allstates.checkin?.time?.timefrom}:{allstates.checkin?.time?.timefromminutes} {allstates.checkin?.time?.ztimefrom}</div>
+                        <div className={styles.litedate}>{`${strArray[new Date(createNativeDateObj(allstates.checkin.from)).getMonth()]} ${allstates.checkin.from.day} ${new Date(createNativeDateObj(allstates.checkin.from)).getFullYear()}`}, {getFormatedNumber(allstates.checkin?.time?.timefrom)}:{getFormatedNumber(allstates.checkin?.time?.timefromminutes)} {allstates.checkin?.time?.ztimefrom}</div>
                     </Grid>
                     <Grid  className={styles.leftnest2}>
                         <div className={styles.liteheading}>Return</div>
                         <div className={styles.litetitle}>{location?.description} </div>
-                        <div className={styles.litedate}>{`${strArray[new Date(createNativeDateObj(allstates.checkin.to)).getMonth()]} ${allstates.checkin.to.day} ${new Date(createNativeDateObj(allstates.checkin.to)).getFullYear()}`}, {allstates.checkin?.time?.timeto}:{allstates.checkin?.time?.timetominutes} {allstates.checkin?.time?.ztimeto}</div>
+                        <div className={styles.litedate}>{`${strArray[new Date(createNativeDateObj(allstates.checkin.to)).getMonth()]} ${allstates.checkin.to.day} ${new Date(createNativeDateObj(allstates.checkin.to)).getFullYear()}`}, {getFormatedNumber(allstates.checkin?.time?.timeto)}:{getFormatedNumber(allstates.checkin?.time?.timetominutes)} {allstates.checkin?.time?.ztimeto}</div>
                     </Grid>
                    </div>
                     <div className={styles.headlinerow}>

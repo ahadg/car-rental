@@ -9,6 +9,7 @@ import formatPrice from '../../helpers/priceFormate';
 import { ICar, IDate } from '../../interfaces/interfaces';
 import { getCheckinFrom, getCheckinTo, getSingleCarSelector } from '../../redux/selectors';
 import useStyles from './single-car.styles';
+import { getFormatedNumber } from '../../helpers/analitic';
 
 const SingleCar = (): ReactElement => {
     const styles = useStyles();
@@ -52,10 +53,10 @@ const SingleCar = (): ReactElement => {
                     </Typography>
 
                     <Typography className={styles.date} variant="body2" color="textSecondary" component="p">
-                        {`Start date: ${dateFrom.month+1}/${dateFrom.day}/${dateFrom.year} ${checkin.time?.timefrom}:${checkin.time?.timefromminutes}`}
+                        {`Start date: ${dateFrom.month+1}/${dateFrom.day}/${dateFrom.year} ${getFormatedNumber(checkin.time?.timefrom)}:${getFormatedNumber(checkin.time?.timefromminutes)} ${checkin?.time?.ztimefrom}`}
                     </Typography>
                     <Typography className={styles.date} variant="body2" color="textSecondary" component="p">
-                        {`End date: ${dateTo.month+1}/${dateTo.day}/${dateTo.year} ${checkin.time?.timeto}:${checkin.time?.timetominutes}`}
+                        {`End date: ${dateTo.month+1}/${dateTo.day}/${dateTo.year} ${getFormatedNumber(checkin.time?.timeto)}:${getFormatedNumber(checkin.time?.timetominutes)} ${checkin?.time?.ztimeto}`}
                     </Typography>
                 </Grid>
             </Grid>
