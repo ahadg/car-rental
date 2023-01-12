@@ -17,6 +17,9 @@ import { checkinFromDate, checkinToDate, checkintime } from './checkin-date.acti
 import useStyles from './checkin-date.styles';
 import BasicDateRangePicker from './MuiDateRangePicker';
 import BasicTimePicker from './MuiTimePicker';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+
 // import './calender.css';
 
 const CheckinDate = () => {
@@ -51,6 +54,34 @@ const CheckinDate = () => {
         dispatch(checkinFromDate(customDateObj));
     };
 
+
+    const timeList = [
+        { label: '12:00 AM', year: 1994 },
+        { label: '01:00 AM', year: 1994 },
+        { label: '02:00 AM', year: 1994 },
+        { label: '03:00 AM', year: 1994 },
+        { label: '04:00 AM', year: 1994 },
+        { label: '05:00 AM', year: 1994 },
+        { label: '06:00 AM', year: 1994 },
+        { label: '07:00 AM', year: 1994 },
+        { label: '08:00 AM', year: 1994 },
+        { label: '09:00 AM', year: 1994 },
+        { label: '10:00 AM', year: 1994 },
+        { label: '11:00 AM', year: 1994 },
+        { label: '12:00 PM', year: 1994 },
+        { label: '01:00 PM', year: 1994 },
+        { label: '02:00 PM', year: 1994 },
+        { label: '03:00 PM', year: 1994 },
+        { label: '04:00 PM', year: 1994 },
+        { label: '05:00 PM', year: 1994 },
+        { label: '06:00 PM', year: 1994 },
+        { label: '07:00 PM', year: 1994 },
+        { label: '08:00 PM', year: 1994 },
+        { label: '09:00 PM', year: 1994 },
+        { label: '10:00 PM', year: 1994 },
+        { label: '11:00 PM', year: 1994 },
+    ]
+
     const handleChangeTo = (date: Date): void => {
         dispatch(checkinToDate(createCustomDateObj(date)));
         console.log("handleChangeFrom",{date,customDateObj : createCustomDateObj(date)})
@@ -74,28 +105,26 @@ const CheckinDate = () => {
 
     const [ztimefrom, setztimefrom] = useState(checkin.time.ztimefrom);
     const [timefrom, settimefrom] = useState(checkin.time.timefrom || 1);
-    const [timefromminutes, settimefromminutes] = useState(checkin.time.timefromminutes || 1);
+    const [timefromminutes, settimefromminutes] = useState(checkin.time.timefromminutes || 0);
 
     const [ztimeto, setztimeto] = useState(checkin.time.ztimeto);
     const [timeto, settimeto] = useState(checkin.time.timeto || 1);
-    const [timetominutes, settimetominutes] = useState(checkin.time.timetominutes || 1);
+    const [timetominutes, settimetominutes] = useState(checkin.time.timetominutes || 0);
 
     // time handlers
     const handleChangeTimeFrom = (time: any): void => {
         console.log("time",time)
-     
-        setztimefrom(time?.$H > 12 ? "PM" : 'AM');
-        settimefrom(time?.$H > 12 ? time?.$H - 12 : time?.$H);
-        settimefromminutes(time?.$m || 0)
+        setztimefrom(time.split(" ")[1]);
+        let hour = Number(time.split(":")[0])
+        settimefrom(hour);
+        settimefromminutes(0)
     };
 
     const handleChangeTimeTo = (time: any): void => {
-        console.log("time",time)
-        setztimeto(time?.$H > 12 ? "PM" : 'AM');
-        settimeto(time?.$H > 12 ? time?.$H - 12 : time?.$H);
-        settimetominutes(time?.$m || 0)
-        // setztimeto(ztime);
-        // settimeto(time);
+        setztimeto(time.split(" ")[1]);
+        let hour = Number(time.split(":")[0])
+        settimeto(hour);
+        settimetominutes(0)
     };
 
     const [disablecode, setdiablescode] = useState(true);
@@ -104,10 +133,10 @@ const CheckinDate = () => {
 
     useEffect(() => {
         let from = new Date(
-            new Date(createNativeDateObj(dateFrom)).setHours(ztimefrom ? (ztimefrom == 'PM' ? timefrom + 12 : timefrom) : 0),
+            new Date(createNativeDateObj(dateFrom)).setHours(ztimefrom ? (ztimefrom == 'PM' ? timefrom + 12 : (ztimefrom == 'AM' && timefrom == 12 ? 0 : timefrom)) : 0),
         ).getTime();
         let to = new Date(
-            new Date(createNativeDateObj(dateTo)).setHours(ztimeto ? (ztimeto == 'PM' ? timeto + 12 : timeto) : 0),
+            new Date(createNativeDateObj(dateTo)).setHours(ztimeto ? (ztimeto == 'PM' ? timeto + 12 : (ztimeto == 'AM' && timeto == 12 ? 0 : timeto)) : 0),
         ).getTime();
         const diffTime = Math.abs(from - to);
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -190,9 +219,37 @@ const CheckinDate = () => {
                     <BasicDateRangePicker setcalendopen={setcalendopen} calendopen={calendopen} setmuiDateValue={setmuiDateValue} />
                 </div>
                 <div className="time-side">
-                    <BasicTimePicker text={'Pick-up Time'} setValuefunc={handleChangeTimeFrom} />
+                    {/* <BasicTimePicker text={'Pick-up Time'} setValuefunc={handleChangeTimeFrom} /> */}
+                    <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        onChange={(event, newValue : any) => {
+                            handleChangeTimeFrom(newValue.label);
+                          }}
+                          //inputValue={inputValue}
+                          onInputChange={(event, newInputValue) => {
+                            //setInputValue(newInputValue);
+                          }}
+                        options={timeList}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Pick-up Time" />}
+                    />
                     {/* <span style={{ marginLeft: '16px', marginRight: '16px' }}>to</span> */}
-                    <BasicTimePicker text={'ReturnTime'} setValuefunc={handleChangeTimeTo}/>
+                    <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        onChange={(event, newValue : any) => {
+                            handleChangeTimeTo(newValue.label);
+                          }}
+                          //inputValue={inputValue}
+                          onInputChange={(event, newInputValue) => {
+                            //setInputValue(newInputValue);
+                          }}
+                        options={timeList}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Return Time" />}
+                    />
+                    {/* <BasicTimePicker text={'ReturnTime'} setValuefunc={handleChangeTimeTo}/> */}
                 </div>
             </div>
         </>

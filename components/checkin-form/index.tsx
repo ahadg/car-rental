@@ -50,10 +50,10 @@ const CheckinForm = (): ReactElement => {
                 dispatch(open(form.warn.start));
                 return;
             }
-            if (!isCorrectEnd(DateFrom,DateTo,24)) {
-                 dispatch(open(form.warn.end));
-                 return;
-             }
+            // if (!isCorrectEnd(DateFrom,DateTo,24)) {
+            //      dispatch(open(form.warn.end));
+            //      return;
+            //  }
             //console.log(values)
              // form data
              dispatch(formActions(values));
