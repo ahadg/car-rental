@@ -157,7 +157,7 @@ const CheckinDate = () => {
                     '<div style="position: absolute; pointer-events: none; color: rgba(130, 130, 130, 0.62); z-index: 100000; width: 100%; text-align: center; bottom: 50%; right: 0px; letter-spacing: 5px; font-size: 24px;"></div>';
             }
             
-            if(window.innerWidth > 800 && window.innerHeight > 800){
+            if(window.innerWidth > 500){
             // hide text when screen is desktop size
             let el2 = document.querySelector('.MuiPaper-root div:nth-child(1) div:nth-child(1)');
             //MuiPaper-root
