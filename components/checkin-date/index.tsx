@@ -148,6 +148,7 @@ const CheckinDate = () => {
 
     useEffect(() => {
         setTimeout(() => {
+            console.log("window.innerWidth, window.innerHeight",window.innerWidth, window.innerHeight)
             let el = document.querySelector('.MuiDialogContent-root div:nth-child(1) div:nth-child(1)');
 
             console.log('the_el', el);
@@ -155,7 +156,9 @@ const CheckinDate = () => {
                 el.innerHTML =
                     '<div style="position: absolute; pointer-events: none; color: rgba(130, 130, 130, 0.62); z-index: 100000; width: 100%; text-align: center; bottom: 50%; right: 0px; letter-spacing: 5px; font-size: 24px;"></div>';
             }
-
+            
+            if(window.innerWidth > 800 && window.innerHeight > 800){
+            // hide text when screen is desktop size
             let el2 = document.querySelector('.MuiPaper-root div:nth-child(1) div:nth-child(1)');
             //MuiPaper-root
 
@@ -164,6 +167,7 @@ const CheckinDate = () => {
                 el2.innerHTML =
                     '<div style="position: absolute; pointer-events: none; color: rgba(130, 130, 130, 0.62); z-index: 100000; width: 100%; text-align: center; bottom: 50%; right: 0px; letter-spacing: 5px; font-size: 24px;"></div>';
             }
+           }
         }, 100);
     }, [calendopen]);
     //el.innerHTML = ''
