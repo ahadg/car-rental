@@ -303,7 +303,11 @@
 
 @media (max-width: 500px) {
     .date-time-picker-mui {
-        flex-direction: column;
-        width: 100%;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    .MuiDateRangePickerViewDesktop-root {
+        display: flex !important;
+        flex-direction: column !important;
     }
 }
