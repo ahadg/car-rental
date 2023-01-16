@@ -151,7 +151,7 @@ const CheckinDate = () => {
 
 
     useEffect(() => {
-        if(calendopen) {
+        //if(calendopen) {
             setTimeout(() => {
                 if(isMobile){
                     console.log("window.innerWidth, window.innerHeight",window.innerWidth, window.innerHeight)
@@ -173,7 +173,7 @@ const CheckinDate = () => {
                 }
 
             }, 100);
-        }
+        //}
     }, [calendopen,isMobile]);
     //el.innerHTML = ''
 
