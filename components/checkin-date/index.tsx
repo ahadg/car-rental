@@ -20,11 +20,12 @@ import BasicTimePicker from './MuiTimePicker';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
+
 // import './calender.css';
 
 const CheckinDate = () => {
     const styles = useStyles();
-    const matches = useMediaQuery('(max-width:1200px)');
+    const isMobile = useMediaQuery('(max-width: 500px)');
 
     // date objects
     const dispatch = useDispatch();
@@ -34,6 +35,8 @@ const CheckinDate = () => {
     const [muiDateValue,setmuiDateValue] = useState({})
     const [muiPickupTimeValue,setPickupTimeValue] = useState()
     const [muiReturnValue,setReturnTimeValue] = useState()
+        // const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
+
     
 
     console.log('muiDateValue', muiDateValue,{muiPickupTimeValue,muiReturnValue});
@@ -146,30 +149,32 @@ const CheckinDate = () => {
         });
     }, [dateFrom, dateTo, ztimeto, timeto, ztimefrom, timefrom,timefromminutes,timefromminutes]);
 
+
     useEffect(() => {
-        setTimeout(() => {
-            console.log("window.innerWidth, window.innerHeight",window.innerWidth, window.innerHeight)
-            let el = document.querySelector('.MuiDialogContent-root div:nth-child(1) div:nth-child(1)');
+        if(calendopen) {
+            setTimeout(() => {
+                if(isMobile){
+                    console.log("window.innerWidth, window.innerHeight",window.innerWidth, window.innerHeight)
+                    let el = document.querySelector('.MuiDialogContent-root div:nth-child(1) div:nth-child(1)');
+        
+                    console.log('the_el', el);
+                    if (el) {
+                        el.innerHTML =
+                            '<div style="position: absolute; pointer-events: none; color: rgba(130, 130, 130, 0.62); z-index: 100000; width: 100%; text-align: center; bottom: 50%; right: 0px; letter-spacing: 5px; font-size: 24px;"></div>';
+                    }
+                }
+                else {
+                    // hide text when screen is desktop size
+                    let el2 = document.querySelector('.MuiPaper-root div:nth-child(1) div:nth-child(1)');
+                    if (el2) {
+                        el2.innerHTML =
+                            '<div style="position: absolute; pointer-events: none; color: rgba(130, 130, 130, 0.62); z-index: 100000; width: 100%; text-align: center; bottom: 50%; right: 0px; letter-spacing: 5px; font-size: 24px;"></div>';
+                    }
+                }
 
-            console.log('the_el', el);
-            if (el) {
-                el.innerHTML =
-                    '<div style="position: absolute; pointer-events: none; color: rgba(130, 130, 130, 0.62); z-index: 100000; width: 100%; text-align: center; bottom: 50%; right: 0px; letter-spacing: 5px; font-size: 24px;"></div>';
-            }
-            
-            if(window.innerWidth > 500){
-            // hide text when screen is desktop size
-            let el2 = document.querySelector('.MuiPaper-root div:nth-child(1) div:nth-child(1)');
-            //MuiPaper-root
-
-            console.log('the_el', el);
-            if (el2) {
-                el2.innerHTML =
-                    '<div style="position: absolute; pointer-events: none; color: rgba(130, 130, 130, 0.62); z-index: 100000; width: 100%; text-align: center; bottom: 50%; right: 0px; letter-spacing: 5px; font-size: 24px;"></div>';
-            }
-           }
-        }, 100);
-    }, [calendopen]);
+            }, 100);
+        }
+    }, [calendopen,isMobile]);
     //el.innerHTML = ''
 
     return (
