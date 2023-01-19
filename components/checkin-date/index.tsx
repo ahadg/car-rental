@@ -16,6 +16,7 @@ import Time from '../time';
 import { checkinFromDate, checkinToDate, checkintime } from './checkin-date.actions';
 import useStyles from './checkin-date.styles';
 import BasicDateRangePicker from './MuiDateRangePicker';
+import DatePicker from './MuiDatePicker'
 import BasicTimePicker from './MuiTimePicker';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -43,6 +44,8 @@ const CheckinDate = () => {
 
     // calendar handlers
     const handleChangeFrom = (date: Date): void => {
+        console.log("date,",date)
+        date = date?.['$d']
         const customDateObj = createCustomDateObj(date);
         // {
         //     "date": "2023-02-17T16:00:00.000Z",
@@ -86,6 +89,7 @@ const CheckinDate = () => {
     ]
 
     const handleChangeTo = (date: Date): void => {
+        date = date?.['$d']
         dispatch(checkinToDate(createCustomDateObj(date)));
         console.log("handleChangeFrom",{date,customDateObj : createCustomDateObj(date)})
     };
@@ -225,7 +229,9 @@ const CheckinDate = () => {
             </Typography>
             <div className="date-time-picker-mui">
                 <div className="calender-side">
-                    <BasicDateRangePicker setcalendopen={setcalendopen} calendopen={calendopen} setmuiDateValue={setmuiDateValue} />
+                    {/* <BasicDateRangePicker setcalendopen={setcalendopen} calendopen={calendopen} setmuiDateValue={setmuiDateValue} /> */}
+                    <DatePicker placeholder="Pick-up Date" setvalue={handleChangeFrom}/>
+                    <DatePicker placeholder="Return Date" setvalue={handleChangeTo}/>
                 </div>
                 <div className="time-side">
                     {/* <BasicTimePicker text={'Pick-up Time'} setValuefunc={handleChangeTimeFrom} /> */}
