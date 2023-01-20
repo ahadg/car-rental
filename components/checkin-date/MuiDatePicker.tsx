@@ -12,6 +12,7 @@ export default function BasicDateRangePicker({placeholder,setvalue})  {
     return (
       <LocalizationProvider dateAdapter={AdapterDayjs}>
       <MobileDatePicker
+        closeOnSelect={true}
         label={placeholder}
         value={value}
         onChange={(newValue) => {
