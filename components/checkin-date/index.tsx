@@ -145,8 +145,11 @@ const CheckinDate = () => {
         let to = new Date(
             new Date(createNativeDateObj(dateTo)).setHours(ztimeto ? (ztimeto == 'PM' ? timeto + 12 : (ztimeto == 'AM' && timeto == 12 ? 0 : timeto)) : 0),
         ).getTime();
-        const diffTime = Math.abs(from - to);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        let diffTime = Math.abs(from - to);
+        let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        if (diffDays <= 0) {
+            diffDays = 1
+        }
         dispatch(checkintime({ ...checkin.time, totaldays: diffDays, ztimefrom, timefrom, ztimeto, timeto,timefromminutes,timetominutes }));
         console.log('dateeee3', {
             totaldays: diffDays, ztimefrom, timefrom, ztimeto, timeto
